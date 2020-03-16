@@ -1,0 +1,170 @@
+(full-reset)
+(set-unique-name-assumption t)
+
+(in-knowledge-base Covid-19 Covid-19)
+(signature :atomic-concepts (Person Confirmed Patient Country County Date Status InfectionSource Spreader Gender 
+                             recovered hospitalized quarantine selfIsolation dead)
+           :roles  ((has-direct-contact      :domain Person :range Person :parent has-contact)
+                    (has-contact             :domain Person :range Person :transitive t)
+                    (has-status              :domain Person :range Status :inverse status-of)
+                    (has-source-of-infection :domain Person :range InfectionSource)
+                    (has-origin-of-infection :domain Person :range Country)
+                    (has-detection-location  :domain Person :range County)
+                    (has-confirmation-date   :domain Person :range Date)
+                    )
+           :features (has-gender)
+           :attributes ((integer has-age) (integer has-day) (integer has-month) (integer has-year))
+           :individuals (case0 case1 case3 
+                         male female 
+                         recovered hospitalized quarantine selfIsolation dead 
+                         localTransmission importedCase
+                         unknownSourceContact unknownForwardContact
+                         Gorj Maramures Timis
+                         Italy Romania
+                         d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13
+                         )
+)  
+                             
+(equivalent Confirmed (some has-status (one-of recovered hospitalized quarantine selfIsolation dead)))
+
+(equivalent Spreader (and Person (at-least 5 has-direct-contact)))
+(equivalent Date (max has-day 31) (max has-month 13) (equal has-year 2020))
+
+(implies Country InfectionSource)
+
+(classify-tbox)
+(tbox-coherent?) 
+(tbox-cyclic?)
+(get-tbox-signature)
+
+(instance male Gender)
+(instance female Gender)
+
+(instance recovered Status)
+(instance hospitalized Status)
+(instance quarantine Status)
+(instance selfIsolation Status)
+(instance dead Status)
+
+(instance localTransmission InfectionSource)
+(instance importedCase InfectionSource)
+
+(instance d1 (and (equal has-Day 26) (equal has-Month 2)))
+(instance d2 (and (equal has-Day 27) (equal has-Month 2)))
+(instance d3 (and (equal has-Day 28) (equal has-Month 2)))
+(instance d4 (and (equal has-Day 29) (equal has-Month 2)))
+(instance d5 (and (equal has-Day 1) (equal has-Month 3)))
+(instance d6 (and (equal has-Day 2) (equal has-Month 3)))
+(instance d7 (and (equal has-Day 3) (equal has-Month 3)))
+(instance d8 (and (equal has-Day 4) (equal has-Month 3)))
+(instance d9 (and (equal has-Day 5) (equal has-Month 3)))
+(instance d10 (and (equal has-Day 6) (equal has-Month 3)))
+(instance d11 (and (equal has-Day 7) (equal has-Month 3)))
+(instance d12 (and (equal has-Day 8) (equal has-Month 3)))
+(instance d13 (and (equal has-Day 9) (equal has-Month 3)))
+
+
+(related case0 case1 has-direct-contact)
+
+(instance case1 (and Person (equal has-age 20)))
+(related  case1 recovered has-status)
+(related  case1 male has-gender)
+(related  case1 Gorj has-detection-location)
+(related  case1 localTransmission has-source-of-infection)
+(related  case1 d1 has-confirmation-date) 
+
+
+(instance case3 (and Person (equal has-age 38)))
+(related  case3 hospitalized has-status)
+(related  case3 female has-gender)
+(related  case3 Timis  has-detection-location)
+(related  case3 importedCase has-source-of-infection)
+(related  case3 Italy has-origin-of-infection)
+(related  case3 d3 has-confirmation-date) 
+(related unknownSourceContact case3 has-direct-contact)
+(related  case3 case4 has-direct-contact)
+
+(instance case4 (and Person (equal has-age 47)))
+(related  case4 recovered has-status)
+(related  case4 male has-gender)
+(related  case4 Timis  has-detection-location)
+(related  case4 importedCase has-source-of-infection)
+(related  case4 Italy has-origin-of-infection)
+(related  case4 d7 has-confirmation-date) 
+(related  case4 case5 has-direct-contact)
+
+(instance case5 (and Person (equal has-age 16)))
+(related  case5 recovered has-status)
+(related  case5 male has-gender)
+(related  case5 Timis  has-detection-location)
+(related  case5 localTransmission has-source-of-infection)
+(related  case5 Romania has-origin-of-infection)
+(related  case5 d7 has-confirmation-date) 
+(related  case5 case6 has-direct-contact)
+
+(instance case7 (and Person (equal has-age 16)))
+(related  case7 recovered has-status)
+(related  case7 female has-gender)
+(related  case7 Timis  has-detection-location)
+(related  case7 localTransmission has-source-of-infection)
+(related  case7 Romania has-origin-of-infection)
+(related  case7 d10 has-confirmation-date) 
+(related  case7 unknownForwardContact has-direct-contact)
+
+
+;Qbox (queries)
+(realize-abox)
+(compute-all-implicit-role-fillers)
+
+;CQ: all cases
+(concept-instances Confirmed)
+
+;CQ: number of confirmed cases 
+(evaluate (length (retrieve-concept-instances 'Confirmed (current-abox) (all-individuals))))
+
+;CQ: all recovered cases
+(individual-fillers recovered (inv has-status))
+
+;CQ: number of recovered cases
+(evaluate (length  (retrieve-individual-fillers 'recovered 'status-of (current-abox))))
+
+;CQ: all hospitalized cases
+(individual-fillers hospitalized (inv has-status))
+
+;CQ: number of hospitalized cases
+(evaluate (length  (retrieve-individual-fillers 'hospitalized 'status-of (current-abox))))
+
+
+;CQ: all dead cases
+(individual-fillers dead (inv has-status))
+
+;CQ: number of dead cases
+(evaluate (length  (retrieve-individual-fillers 'dead 'status-of (current-abox))))
+
+; CQ: all Spreaders of the disease
+(concept-instances Spreader)
+
+; CQ: all cases from Gorj
+(individual-fillers Gorj (inv has-detection-location))
+
+; CQ: retrieve all information about individual case1
+(describe-individual case1)
+
+; CQ: persons direcly infected by case1 
+(individual-fillers case1 has-direct-contact)
+
+; CQ: person who infected cased1
+(individual-fillers case1 (inv has-direct-contact))
+
+
+; CQ: persons direcly or indirectly infected by case3 
+(individual-fillers case3 has-contact)
+
+; CQ: person who infected cased1
+;(individual-fillers case1 (inv has-direct-contact))
+
+;(individual-instance? i A)
+;(all-individuals)
+;(all-role-assertions)
+
+
