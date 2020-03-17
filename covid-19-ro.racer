@@ -228,3 +228,7 @@
 
 ;CQ: all viruses originated from bats  
 (concept-children (some has-origin Bat))
+
+;CQ -nrql query: persons with unknown source of infection
+ (retrieve (?x) (and (?x Person) (neg (?x (has-known-successor has-source-of-infection)))))
+
