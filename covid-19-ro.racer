@@ -118,7 +118,7 @@
 (related  case109 Timis  has-detection-location)
 (related  case109 localTransmission has-source-of-infection)
 (related  case109 Romania has-origin-of-infection)
-(related  case109 d14 has-confirmation-date) 
+(related  case109 d16 has-confirmation-date) 
 (related  case109 unknownForwardContact has-direct-contact)
 
 
