@@ -112,6 +112,16 @@
 (related  case7 unknownForwardContact has-direct-contact)
 
 
+(instance case109 (and Person (equal has-age 55)))
+(related  case109 hospitalized has-status)
+(related  case109 male has-gender)
+(related  case109 Timis  has-detection-location)
+(related  case109 localTransmission has-source-of-infection)
+(related  case109 Romania has-origin-of-infection)
+(related  case109 d14 has-confirmation-date) 
+(related  case109 unknownForwardContact has-direct-contact)
+
+
 ;Qbox (queries)
 (realize-abox)
 (compute-all-implicit-role-fillers)
