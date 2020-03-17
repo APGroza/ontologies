@@ -62,7 +62,14 @@
 (instance d11 (and (equal has-Day 7) (equal has-Month 3)))
 (instance d12 (and (equal has-Day 8) (equal has-Month 3)))
 (instance d13 (and (equal has-Day 9) (equal has-Month 3)))
-
+(instance d14 (and (equal has-Day 10) (equal has-Month 3)))
+(instance d15 (and (equal has-Day 11) (equal has-Month 3)))
+(instance d16 (and (equal has-Day 12) (equal has-Month 3)))
+(instance d17 (and (equal has-Day 13) (equal has-Month 3)))
+(instance d18 (and (equal has-Day 14) (equal has-Month 3)))
+(instance d19 (and (equal has-Day 15) (equal has-Month 3)))
+(instance d20 (and (equal has-Day 16) (equal has-Month 3)))
+(instance d21 (and (equal has-Day 17) (equal has-Month 3)))
 
 (related case0 case1 has-direct-contact)
 
@@ -111,6 +118,16 @@
 (related  case7 d10 has-confirmation-date) 
 (related  case7 unknownForwardContact has-direct-contact)
 
+(related  case11 case9 has-direct-contact)
+(related  case12 case14 has-direct-contact)
+
+(instance case17 (and Person (equal has-age 60)))
+(related  case17 hospitalised has-status)
+(related  case17 male has-gender)
+(related  case17 Bucharest has-detection-location)
+(related  case17 importedCase has-source-of-infection)
+(related  case17 Israel has-origin-of-infection)
+(related  case17 d13 has-confirmation-date) 
 
 ;Qbox (queries)
 (realize-abox)
@@ -159,6 +176,9 @@
 
 ; CQ: persons direcly or indirectly infected by case3 
 (individual-fillers case3 has-contact)
+
+;CQ: all cases which have Italy as origin of infection
+(individual-fillers Italy(inv has-origin-of-infection)
 
 ; CQ: person who infected cased1
 ;(individual-fillers case1 (inv has-direct-contact))
