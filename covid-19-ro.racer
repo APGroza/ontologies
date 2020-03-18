@@ -163,6 +163,7 @@
 (related  case109 d16 has-confirmation-date) 
 (related  case109 unknownForwardContact has-direct-contact)
 
+
 (instance case119 (and Person (equal has-age 25)))
 (related  case119 hospitalized has-status)
 (related  case119 female has-gender)
