@@ -18,14 +18,14 @@
            :features (has-gender)
            :attributes ((integer has-age) (integer has-day) (integer has-month) (integer has-year))
            :individuals (case0 case1 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
-                         case13 case14 case15 case16 case17 case109 
+                         case13 case14 case15 case16 case17 case52 case109 case119
                          male female 
                          recovered hospitalized quarantine selfIsolation dead 
                          localTransmission importedCase
                          unknownSourceContact unknownForwardContact
                          unknownOrigin
-                         Gorj Maramures Timis Bucharest
-                         Italy Romania Israel
+                         Gorj Maramures Timis Bucharest Cluj
+                         Italy Romania Israel Germany Spain
                          d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21
                          )
 )  
@@ -79,7 +79,6 @@
 (instance d19 (and Date (equal has-Day 15) (equal has-Month 3)))
 (instance d20 (and Date (equal has-Day 16) (equal has-Month 3)))
 (instance d21 (and Date (equal has-Day 17) (equal has-Month 3)))
-
 
 (related case0 case1 has-direct-contact)
 
@@ -139,6 +138,14 @@
 (related  case17 Israel has-origin-of-infection)
 (related  case17 d13 has-confirmation-date) 
 
+(instance case52 (and Person (equal has-age 33)))
+(related  case52 hospitalized has-status)
+(related  case52 female has-gender)
+(related  case52 Cluj has-detection-location)
+(related  case52 importedCase has-source-of-infection)
+(related  case52 Italy has-origin-of-infection)
+(related  case52 d16 has-confirmation-date) 
+
 (instance case109 (and Person (equal has-age 55)))
 (related  case109 hospitalized has-status)
 (related  case109 male has-gender)
@@ -148,6 +155,13 @@
 (related  case109 d16 has-confirmation-date) 
 (related  case109 unknownForwardContact has-direct-contact)
 
+(instance case119 (and Person (equal has-age 25)))
+(related  case119 hospitalized has-status)
+(related  case119 female has-gender)
+(related  case119 Cluj has-detection-location)
+(related  case119 importedCase has-source-of-infection)
+(related  case119 Germany has-origin-of-infection)
+(related  case119 d18 has-confirmation-date) 
 
 ;Rules box
 (define-rule (?x localTransmission has-source-of-infection)
@@ -209,7 +223,6 @@
 
 ; CQ: person who infected case1
 (individual-fillers case1 (inv has-direct-contact))
-
 
 ; CQ: persons direcly or indirectly infected by case3 
 (individual-fillers case3 has-contact)
