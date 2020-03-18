@@ -3,7 +3,7 @@
 
 (in-knowledge-base Covid-19 Covid-19)
 (signature :atomic-concepts (Person Confirmed Patient Country County Date Status InfectionSource Spreader Gender 
-                             SARS-CoV-2 MERS-CoV SARS-CoV Betacoronavirus Virus Bat Fined
+                             Sars SevereAcuteRespiratorySyndrome  Betacoronavirus Virus Bat Fined  COVID-19
                             )
            :roles  ((has-direct-contact      :domain Person :range Person :parent has-contact)
                     (has-contact             :domain Person :range Person :transitive t)
@@ -13,9 +13,10 @@
                     (has-detection-location  :domain Person :range County)
                     (has-confirmation-date   :domain Person :range Date)
                     (has-origin              :domain Virus)
+                     causes
 
                     )
-           :features (has-gender)
+           :features (has-gender :inverse inv-has-gender)
            :attributes ((integer has-age) (integer has-day) (integer has-month) (integer has-year))
            :individuals (case0 case1 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
                          case13 case14 case15 case16 case17 case23 case24 case27 case52 case76 case109 case111 case119 case121
@@ -27,12 +28,15 @@
                          Gorj Maramures Timis Bucharest Cluj Hunedoara Mures Brasov Buzau
                          Italy Romania Israel Germany Spain Norway USA UK
                          d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21
+                         SARS-CoV-2 MERS-CoV SARS-CoV
                          )
 )  
 
-(implies SARS-CoV-2 (and Betacoronavirus (some has-origin Bat)))
-(implies MERS-CoV   (and Betacoronavirus (some has-origin Bat)))
-(implies SARS-CoV   (and Betacoronavirus (some has-origin Bat)))
+(implies SARS (and Betacoronavirus (some causes SevereAcuteRespiratorySyndrome)))
+(instance SARS-CoV-2 (and Sars (some has-origin Bat) (some causes COVID-19)))
+(instance MERS-CoV   (and Sars (some has-origin Bat)))
+(instance SARS-CoV   (and Sars (some has-origin Bat)))
+
                        
 (equivalent Confirmed (some has-status Status)) 
 
@@ -276,7 +280,6 @@
 ;CQ: number of hospitalized cases
 (evaluate (length  (retrieve-individual-fillers 'hospitalized 'status-of (current-abox))))
 
-
 ;CQ: all dead cases
 (individual-fillers dead (inv has-status))
 
@@ -321,4 +324,10 @@
 
 ;CQ -nrql query: persons with unknown source of infection
  (retrieve (?x) (and (?x Person) (neg (?x (has-known-successor has-source-of-infection)))))
+
+;CQ - male cases 
+(individual-fillers male (inv has-gender))
+
+;CQ - female cases 
+(individual-fillers female (inv has-gender))
 
