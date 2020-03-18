@@ -18,14 +18,14 @@
            :features (has-gender)
            :attributes ((integer has-age) (integer has-day) (integer has-month) (integer has-year))
            :individuals (case0 case1 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
-                         case13 case14 case15 case16 case17 case27 case52 case109 case119 case121
+                         case13 case14 case15 case16 case17 case27 case52 case76 case109 case111 case119 case121
                          male female 
                          recovered hospitalized quarantine selfIsolation dead 
                          localTransmission importedCase
                          unknownSourceContact unknownForwardContact
                          unknownOrigin
-                         Gorj Maramures Timis Bucharest Cluj Hunedoara Mures
-                         Italy Romania Israel Germany Spain Norway
+                         Gorj Maramures Timis Bucharest Cluj Hunedoara Mures Brasov
+                         Italy Romania Israel Germany Spain Norway USA
                          d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21
                          )
 )  
@@ -163,6 +163,17 @@
 (related  case52 Italy has-origin-of-infection)
 (related  case52 d16 has-confirmation-date) 
 
+(instance case76 (and Person (equal has-age 44)))
+(related  case76 hospitalized has-status)
+(related  case76 male has-gender)
+(related  case76 Brasov  has-detection-location)
+(related  case76 importedCase has-source-of-infection)
+(related  case76 USA has-origin-of-infection)
+(related  case76 d17 has-confirmation-date) 
+(related  case76 unknownForwardContact has-direct-contact)
+
+
+
 (instance case109 (and Person (equal has-age 55)))
 (related  case109 hospitalized has-status)
 (related  case109 male has-gender)
@@ -171,6 +182,16 @@
 (related  case109 Romania has-origin-of-infection)
 (related  case109 d16 has-confirmation-date) 
 (related  case109 unknownForwardContact has-direct-contact)
+
+
+(instance case111 (and Person (equal has-age 53)))
+(related  case111 hospitalized has-status)
+(related  case111 female has-gender)
+(related  case111 Brasov  has-detection-location)
+(related  case111 localTransmission has-source-of-infection)
+(related  case111 Romania has-origin-of-infection)
+(related  case111 d18 has-confirmation-date) 
+(related  case111 case76 has-direct-contact)
 
 (instance case119 (and Person (equal has-age 25)))
 (related  case119 hospitalized has-status)
