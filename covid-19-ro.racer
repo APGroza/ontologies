@@ -18,14 +18,14 @@
            :features (has-gender)
            :attributes ((integer has-age) (integer has-day) (integer has-month) (integer has-year))
            :individuals (case0 case1 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
-                         case13 case14 case15 case16 case17 case27 case52 case76 case109 case111 case119 case121
+                         case13 case14 case15 case16 case17 case23 case24 case27 case52 case76 case109 case111 case119 case121
                          male female 
                          recovered hospitalized quarantine selfIsolation dead 
                          localTransmission importedCase
                          unknownSourceContact unknownForwardContact
                          unknownOrigin
-                         Gorj Maramures Timis Bucharest Cluj Hunedoara Mures Brasov
-                         Italy Romania Israel Germany Spain Norway USA
+                         Gorj Maramures Timis Bucharest Cluj Hunedoara Mures Brasov Buzau
+                         Italy Romania Israel Germany Spain Norway USA UK
                          d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21
                          )
 )  
@@ -139,6 +139,15 @@
 (related  case15 d6 has-confirmation-date) 
 (related  case15 unknownForwardContact has-direct-contact)
 
+(instance case16 (and Person (equal has-age 73)))
+(related  case16 hospitalized has-status)
+(related  case16 female has-gender)
+(related  case16 Buzau has-detection-location)
+(related  case16 importedCase has-source-of-infection)
+(related  case16 Italy has-origin-of-infection)
+(related  case16 d13 has-confirmation-date)
+(related  case16 unknownForwardContact has-direct-contact)
+
 (instance case17 (and Person (equal has-age 60) Fined))
 (related  case17 hospitalized has-status)
 (related  case17 male has-gender)
@@ -146,6 +155,22 @@
 (related  case17 importedCase has-source-of-infection)
 (related  case17 Israel has-origin-of-infection)
 (related  case17 d13 has-confirmation-date) 
+
+(instance case23 (and Person (equal has-age 35)))
+(related  case23 hospitalized has-status)
+(related  case23 female has-gender)
+(related  case23 Bucharest has-detection-location)
+(related  case23 importedCase has-source-of-infection)
+(related  case23 Israel has-origin-of-infection)
+(related  case23 d14 has-confirmation-date)
+
+(instance case24 (and Person (equal has-age 34)))
+(related  case24 hospitalized has-status)
+(related  case24 male has-gender)
+(related  case24 Bucharest has-detection-location)
+(related  case24 importedCase has-source-of-infection)
+(related  case24 UK has-origin-of-infection)
+(related  case24 d14 has-confirmation-date)
 
 (instance case27 (and Person (equal has-age 26) Fined))
 (related  case27 recovered has-status)
