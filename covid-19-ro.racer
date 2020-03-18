@@ -18,14 +18,14 @@
            :features (has-gender)
            :attributes ((integer has-age) (integer has-day) (integer has-month) (integer has-year))
            :individuals (case0 case1 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
-                         case13 case14 case15 case16 case17 case52 case109 case119
+                         case13 case14 case15 case16 case17 case52 case109 case119 case121
                          male female 
                          recovered hospitalized quarantine selfIsolation dead 
                          localTransmission importedCase
                          unknownSourceContact unknownForwardContact
                          unknownOrigin
                          Gorj Maramures Timis Bucharest Cluj
-                         Italy Romania Israel Germany Spain
+                         Italy Romania Israel Germany Spain Norway
                          d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21
                          )
 )  
@@ -162,6 +162,15 @@
 (related  case119 importedCase has-source-of-infection)
 (related  case119 Germany has-origin-of-infection)
 (related  case119 d18 has-confirmation-date) 
+
+(instance case121 (and Person (equal has-age 37)))
+(related  case121 hospitalized has-status)
+(related  case121 male has-gender)
+(related  case121 Bucharest  has-detection-location)
+(related  case121 importedCase has-source-of-infection)
+(related  case121 Norway has-origin-of-infection)
+(related  case121 d18 has-confirmation-date) 
+(related  case121 unknownForwardContact has-direct-contact)
 
 ;Rules box
 (define-rule (?x localTransmission has-source-of-infection)
