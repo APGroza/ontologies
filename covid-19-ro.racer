@@ -24,7 +24,7 @@
                          localTransmission importedCase
                          unknownSourceContact unknownForwardContact
                          unknownOrigin
-                         Gorj Maramures Timis Bucharest Cluj Hunedoara
+                         Gorj Maramures Timis Bucharest Cluj Hunedoara Mures
                          Italy Romania Israel Germany Spain Norway
                          d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21
                          )
@@ -130,6 +130,15 @@
 (related  case11 case9 has-direct-contact)
 (related  case12 case14 has-direct-contact)
 
+(instance case15 (and Person (equal has-age 70)))
+(related  case15 hospitalized has-status)
+(related  case15 female has-gender)
+(related  case15 Mures has-detection-location)
+(related  case15 importedCase has-source-of-infection)
+(related  case15 Italy has-origin-of-infection)
+(related  case15 d6 has-confirmation-date) 
+(related  case15 unknownForwardContact has-direct-contact)
+
 (instance case17 (and Person (equal has-age 60) Fined))
 (related  case17 hospitalized has-status)
 (related  case17 male has-gender)
@@ -179,6 +188,8 @@
 (related  case121 Norway has-origin-of-infection)
 (related  case121 d18 has-confirmation-date) 
 (related  case121 unknownForwardContact has-direct-contact)
+
+
 
 ;Rules box
 (define-rule (?x localTransmission has-source-of-infection)
