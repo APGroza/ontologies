@@ -148,6 +148,15 @@
 (related  case109 d16 has-confirmation-date) 
 (related  case109 unknownForwardContact has-direct-contact)
 
+(instance case121 (and Person (equal has-age 37)))
+(related  case121 hospitalized has-status)
+(related  case121 male has-gender)
+(related  case121 Bucharest  has-detection-location)
+(related  case121 importedCase has-source-of-infection)
+(related  case121 Norway has-origin-of-infection)
+(related  case121 d18 has-confirmation-date) 
+(related  case121 unknownForwardContact has-direct-contact)
+
 
 ;Rules box
 (define-rule (?x localTransmission has-source-of-infection)
