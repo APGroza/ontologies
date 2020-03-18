@@ -3,7 +3,7 @@
 
 (in-knowledge-base Covid-19 Covid-19)
 (signature :atomic-concepts (Person Confirmed Patient Country County Date Status InfectionSource Spreader Gender 
-                             SARS-CoV-2 MERS-CoV SARS-CoV Betacoronavirus Virus Bat
+                             SARS-CoV-2 MERS-CoV SARS-CoV Betacoronavirus Virus Bat Fined
                             )
            :roles  ((has-direct-contact      :domain Person :range Person :parent has-contact)
                     (has-contact             :domain Person :range Person :transitive t)
@@ -18,13 +18,13 @@
            :features (has-gender)
            :attributes ((integer has-age) (integer has-day) (integer has-month) (integer has-year))
            :individuals (case0 case1 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
-                         case13 case14 case15 case16 case17 case52 case109 case119 case121
+                         case13 case14 case15 case16 case17 case27 case52 case109 case119 case121
                          male female 
                          recovered hospitalized quarantine selfIsolation dead 
                          localTransmission importedCase
                          unknownSourceContact unknownForwardContact
                          unknownOrigin
-                         Gorj Maramures Timis Bucharest Cluj
+                         Gorj Maramures Timis Bucharest Cluj Hunedoara
                          Italy Romania Israel Germany Spain Norway
                          d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21
                          )
@@ -37,7 +37,7 @@
 (equivalent Confirmed (some has-status Status)) 
 
 (equivalent Spreader (and Person (at-least 5 has-direct-contact)))
-(equivalent Date (max has-day 31) (max has-month 13) (equal has-year 2020))
+(equivalent Date (and (max has-day 31) (max has-month 13) (equal has-year 2020)))
 
 (implies Country InfectionSource)
 
@@ -130,13 +130,21 @@
 (related  case11 case9 has-direct-contact)
 (related  case12 case14 has-direct-contact)
 
-(instance case17 (and Person (equal has-age 60)))
+(instance case17 (and Person (equal has-age 60) Fined))
 (related  case17 hospitalized has-status)
 (related  case17 male has-gender)
 (related  case17 Bucharest has-detection-location)
 (related  case17 importedCase has-source-of-infection)
 (related  case17 Israel has-origin-of-infection)
 (related  case17 d13 has-confirmation-date) 
+
+(instance case27 (and Person (equal has-age 26) Fined))
+(related  case27 recovered has-status)
+(related  case27 female has-gender)
+(related  case27 Hunedoara has-detection-location)
+(related  case27 importedCase has-source-of-infection)
+(related  case27 Italy has-origin-of-infection)
+(related  case27 d14 has-confirmation-date) 
 
 (instance case52 (and Person (equal has-age 33)))
 (related  case52 hospitalized has-status)
@@ -220,6 +228,9 @@
 
 ; CQ: all Spreaders of the disease
 (concept-instances Spreader)
+
+; CQ: all Fined persons
+(concept-instances Fined)
 
 ; CQ: all cases from Gorj
 (individual-fillers Gorj (inv has-detection-location))
