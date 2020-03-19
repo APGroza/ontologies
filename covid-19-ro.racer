@@ -20,7 +20,7 @@
            :attributes ((integer has-age) (integer has-day) (integer has-month) (integer has-year))
            :individuals (case0 case1 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
                          case13 case14 case15 case16 case17 case23 case24 case27 case45 case52 case76 
-                         case98 case99 case109 case111 case119 case121
+                         case98 case99 case109 case111 case 112 case119 case121
                          male female 
                          recovered hospitalized quarantine selfIsolation dead 
                          localTransmission importedCase
@@ -238,6 +238,15 @@
 (related  case111 Romania has-origin-of-infection)
 (related  case111 d18 has-confirmation-date) 
 (related  case111 case76 has-direct-contact)
+
+(instance case112 (and Person (equal has-age 33)))
+(related  case112 hospitalized has-status)
+(related  case112 female has-gender)
+(related  case112 Timis  has-detection-location)
+(related  case112 importedCase has-source-of-infection)
+(related  case112 Italy has-origin-of-infection)
+(related  case112 d18 has-confirmation-date)
+(related  case112 unknownForwardContact has-direct-contact)
 
 (instance case119 (and Person (equal has-age 25)))
 (related  case119 hospitalized has-status)
