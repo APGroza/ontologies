@@ -222,6 +222,15 @@
 (related  case111 d18 has-confirmation-date) 
 (related  case111 case76 has-direct-contact)
 
+(instance case112 (and Person (equal has-age 33)))
+(related  case112 hospitalized has-status)
+(related  case112 female has-gender)
+(related  case112 Timis  has-detection-location)
+(related  case112 importedCase has-source-of-infection)
+(related  case112 Italy has-origin-of-infection)
+(related  case112 d18 has-confirmation-date)
+(related  case112 unknownForwardContact has-direct-contact)
+
 (instance case119 (and Person (equal has-age 25)))
 (related  case119 hospitalized has-status)
 (related  case119 female has-gender)
