@@ -20,13 +20,13 @@
            :attributes ((integer has-age) (integer has-day) (integer has-month) (integer has-year))
            :individuals (case0 case1 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
                          case13 case14 case15 case16 case17 case23 case24 case27 case45 case52 case76 
-                         case98 case99 case109 case111 case 112 case119 case121
+                         case89 case90 case98 case99 case109 case111 case 112 case119 case121
                          male female 
                          recovered hospitalized quarantine selfIsolation dead 
                          localTransmission importedCase
                          unknownSourceContact unknownForwardContact
                          unknownOrigin
-                         Gorj Maramures Timis Bucharest Cluj Hunedoara Mures Brasov Buzau Satu-Mare Constanta Olt
+                         Gorj Maramures Timis Bucharest Cluj Hunedoara Mures Brasov Buzau Satu-Mare Constanta Olt Bihor Neamt
                          Italy Romania Israel Germany Spain Norway USA UK
                          d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21
                          SARS-CoV-2 MERS-CoV SARS-CoV
@@ -229,6 +229,22 @@
 (related  case76 USA has-origin-of-infection)
 (related  case76 d17 has-confirmation-date) 
 (related  case76 unknownForwardContact has-direct-contact)
+
+(instance case89 (and Person (equal has-age 49)))
+(related case89 hospitalized has-status)
+(related case89 female has-gender)
+(related case89 Bihor has-detection-location)
+(related case89 importedCase has-source-of-infection)
+(related case89 Italy has-origin-of-infection)
+(related case89 d17 has-confirmation-date)
+
+(instance case90 (and Person (equal has-age 64)))
+(related case90 hospitalized has-status)
+(related case90 female has-gender)
+(related case90 Neamt has-detection-location)
+(related case90 importedCase has-source-of-infection)
+(related case90 Italy has-origin-of-infection)
+(related case90 d17 has-confirmation-date)
 
 (instance case98 (and Person (equal has-age 53)))
 (related case98 hospitalized has-status)
