@@ -48,7 +48,7 @@
            :individuals (case0 case1 case2 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
                          case13 case14 case15 case16 case17 case18 case19 case20 case21 case22 case23 case24 case25 
                          case26 case27 case29 case45 case51 case52 case76 case84 case86 
-                         case89 case90 case91 case92 case98 case99 case109 case111 case112 case119 case121 case243
+                         case89 case90 case91 case92 case98 case99 case109 case111 case112 case119 case121 case243 case301
                          male female 
                          white black mongolian american malayan
                          recovered hospitalized quarantine selfIsolation dead 
@@ -515,6 +515,16 @@
 (related  case243 d22 has-confirmation-date) 
 (related  case243 unknownForwardContact has-direct-contact)
 (related  case243 white has-race) 
+
+(instance case301 (and Person (equal has-age 55)))
+(related case301 hospitalized has-status)
+(related case301 male has-gender)
+(related case301 Bucuresti has-detection-location)
+(related case301 localTransmission has-source-of-infection)
+(related case301 Romania has-origin-of-infection)
+(related case301 d18 has-confirmation-date)
+
+
 
 ;Rules box
 (define-rule (?x localTransmission has-source-of-infection)
