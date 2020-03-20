@@ -270,6 +270,25 @@
 (related  case76 d17 has-confirmation-date) 
 (related  case76 unknownForwardContact has-direct-contact)
 
+(instance case84 (and Person (equal has-age 41)))
+(related case84 hospitalized has-status)
+(related case84 female has-gender)
+(related case84 Timisoara has-detection-location)
+(related case84 importedCase has-source-of-infection)
+(related case84 Italy has-origin-of-infection)
+(related case84 d15 has-confirmation-date)
+(related case86 unknownForwardContact has-direct-contact)
+
+(instance case86 (and Person (equal has-age 36)))
+(related case86 hospitalized has-status)
+(related case86 male has-gender)
+(related case86 Lugoj has-detection-location)
+(related case86 importedCase has-source-of-infection)
+(related case86 Italy has-origin-of-infection)
+(related case86 d15 has-confirmation-date)
+(related case86 unknownForwardContact has-direct-contact)
+
+
 (instance case89 (and Person (equal has-age 49)))
 (related case89 hospitalized has-status)
 (related case89 female has-gender)
@@ -459,3 +478,6 @@
 
 ; CQ: all cases from Satu-Mare
 (individual-fillers Satu-Mare (inv has-detection-location))
+
+; CQ: person who infected none until now
+(individual-fillers unknownForwardContact (inv has-direct-contact))
