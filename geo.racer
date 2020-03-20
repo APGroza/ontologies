@@ -1,0 +1,8 @@
+(instance Bucuresti City)
+(instance Ilfov County)
+
+(related Ilfov Romania is-located)
+
+(related Bucuresti Ilfov is-located)
+(related Timisoara Timis is-located) 
+(related Lugoj Timis is-located) 
