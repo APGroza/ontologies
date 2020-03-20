@@ -3,7 +3,7 @@
 
 (in-knowledge-base Covid-19 Covid-19)
 (signature :atomic-concepts (Person Confirmed Patient Country County Date Status InfectionSource Spreader Gender 
-                             Sars SevereAcuteRespiratorySyndrome  Betacoronavirus Virus Bat Fined  COVID-19
+                             Sars SevereAcuteRespiratorySyndrome  Betacoronavirus Virus Bat Fined  COVID-19 Race
                             )
            :roles  ((has-direct-contact      :domain Person :range Person :parent has-contact)
                     (has-contact             :domain Person :range Person :transitive t)
@@ -12,6 +12,7 @@
                     (has-origin-of-infection :domain Person :range Country)
                     (has-detection-location  :domain Person :range County)
                     (has-confirmation-date   :domain Person :range Date)
+					(has-race			     :domain Person :range Race)
                     (has-origin              :domain Virus)
                      causes
 
@@ -22,6 +23,7 @@
                          case13 case14 case15 case16 case17 case23 case24 case27 case45 case52 case76 
                          case89 case90 case98 case99 case109 case111 case 112 case119 case121
                          male female 
+						 white black mongolian american malayan
                          recovered hospitalized quarantine selfIsolation dead 
                          localTransmission importedCase
                          unknownSourceContact unknownForwardContact
@@ -53,6 +55,12 @@
 
 (instance male Gender)
 (instance female Gender)
+
+(instance white Race)
+(instance black Race)
+(instance mongolyan Race)
+(instance american Race)
+(instance malayan Race)
 
 (instance recovered Status)
 (instance hospitalized Status)
@@ -94,7 +102,7 @@
 (related  case1 Gorj has-detection-location)
 (related  case1 localTransmission has-source-of-infection)
 (related  case1 d1 has-confirmation-date) 
-
+(related  case1 white has-race) 
 
 (instance case3 (and Person (equal has-age 38)))
 (related  case3 hospitalized has-status)
@@ -105,6 +113,7 @@
 (related  case3 d3 has-confirmation-date) 
 (related unknownSourceContact case3 has-direct-contact)
 (related  case3 case4 has-direct-contact)
+(related  case3 white has-race)
 
 (instance case4 (and Person (equal has-age 47)))
 (related  case4 recovered has-status)
@@ -114,6 +123,7 @@
 (related  case4 Italy has-origin-of-infection)
 (related  case4 d7 has-confirmation-date) 
 (related  case4 case5 has-direct-contact)
+(related  case4 white has-race)
 
 (instance case5 (and Person (equal has-age 16)))
 (related  case5 recovered has-status)
@@ -123,6 +133,7 @@
 (related  case5 Romania has-origin-of-infection)
 (related  case5 d7 has-confirmation-date) 
 (related  case5 case6 has-direct-contact)
+(related  case5 white has-race)
 
 (instance case7 (and Person (equal has-age 16)))
 (related  case7 recovered has-status)
@@ -132,6 +143,7 @@
 (related  case7 Romania has-origin-of-infection)
 (related  case7 d10 has-confirmation-date) 
 (related  case7 unknownForwardContact has-direct-contact)
+(related  case7 white has-race)
 
 (instance case8 (and Person (equal has-age 51)))
 (related  case8 hospitalized has-status)
@@ -141,6 +153,7 @@
 (related  case8 Italy has-origin-of-infection)
 (related  case8 d10 has-confirmation-date) 
 (related  case8 case6 has-direct-contact)
+(related  case8 white has-race)
 
 (instance case9 (and Person (equal has-age 44)))
 (related  case9 recovered has-status)
@@ -150,6 +163,7 @@
 (related  case9 Italy has-origin-of-infection)
 (related  case9 d10 has-confirmation-date) 
 (related  case9 unknownForwardContact has-direct-contact)
+(related  case9 white has-race)
 
 (instance case10 (and Person (equal has-age 15)))
 (related  case10 recovered has-status)
@@ -159,6 +173,7 @@
 (related  case10 d11 has-confirmation-date) 
 (related  case10 case5 has-direct-contact)
 (related  case10 case7 has-direct-contact)
+(related  case10 white has-race)
 
 (related  case11 case9 has-direct-contact)
 (related  case12 case14 has-direct-contact)
@@ -171,6 +186,7 @@
 (related  case15 Italy has-origin-of-infection)
 (related  case15 d6 has-confirmation-date) 
 (related  case15 unknownForwardContact has-direct-contact)
+(related  case15 white has-race)
 
 (instance case16 (and Person (equal has-age 73)))
 (related  case16 hospitalized has-status)
@@ -180,6 +196,7 @@
 (related  case16 Italy has-origin-of-infection)
 (related  case16 d13 has-confirmation-date)
 (related  case16 unknownForwardContact has-direct-contact)
+(related  case16 white has-race)
 
 (instance case17 (and Person (equal has-age 60) Fined))
 (related  case17 hospitalized has-status)
@@ -188,6 +205,7 @@
 (related  case17 importedCase has-source-of-infection)
 (related  case17 Israel has-origin-of-infection)
 (related  case17 d13 has-confirmation-date) 
+(related  case17 white has-race)
 
 (instance case23 (and Person (equal has-age 35)))
 (related  case23 hospitalized has-status)
@@ -196,6 +214,7 @@
 (related  case23 importedCase has-source-of-infection)
 (related  case23 Israel has-origin-of-infection)
 (related  case23 d14 has-confirmation-date)
+(related  case23 white has-race)
 
 (instance case24 (and Person (equal has-age 34)))
 (related  case24 hospitalized has-status)
@@ -204,6 +223,7 @@
 (related  case24 importedCase has-source-of-infection)
 (related  case24 UK has-origin-of-infection)
 (related  case24 d14 has-confirmation-date)
+(related  case24 white has-race)
 
 (instance case27 (and Person (equal has-age 26) Fined))
 (related  case27 recovered has-status)
@@ -212,6 +232,7 @@
 (related  case27 importedCase has-source-of-infection)
 (related  case27 Italy has-origin-of-infection)
 (related  case27 d14 has-confirmation-date) 
+(related  case27 white has-race)
 
 (instance case52 (and Person (equal has-age 33)))
 (related  case52 hospitalized has-status)
@@ -220,6 +241,7 @@
 (related  case52 importedCase has-source-of-infection)
 (related  case52 Italy has-origin-of-infection)
 (related  case52 d16 has-confirmation-date) 
+(related  case52 white has-race)
 
 (instance case76 (and Person (equal has-age 44)))
 (related  case76 hospitalized has-status)
@@ -229,6 +251,7 @@
 (related  case76 USA has-origin-of-infection)
 (related  case76 d17 has-confirmation-date) 
 (related  case76 unknownForwardContact has-direct-contact)
+(related  case76 white has-race)
 
 (instance case89 (and Person (equal has-age 49)))
 (related case89 hospitalized has-status)
@@ -253,6 +276,7 @@
 (related case98 importedCase has-source-of-infection)
 (related case98 Germany has-origin-of-infection)
 (related case98 d18 has-confirmation-date)
+(related case98 white has-race)
 
 (instance case99 (and Person (equal has-age 54)))
 (related case99 hospitalized has-status)
@@ -262,6 +286,7 @@
 (related case99 Germany has-origin-of-infection)
 (related case99 d18 has-confirmation-date)
 (related case99 case98 has-direct-contact)
+(related case99 white has-race)
 
 (instance case109 (and Person (equal has-age 55)))
 (related  case109 hospitalized has-status)
@@ -271,7 +296,7 @@
 (related  case109 Romania has-origin-of-infection)
 (related  case109 d16 has-confirmation-date) 
 (related  case109 unknownForwardContact has-direct-contact)
-
+(related  case109 white has-race)
 
 (instance case111 (and Person (equal has-age 53)))
 (related  case111 hospitalized has-status)
@@ -281,6 +306,7 @@
 (related  case111 Romania has-origin-of-infection)
 (related  case111 d18 has-confirmation-date) 
 (related  case111 case76 has-direct-contact)
+(related  case111 white has-race)
 
 (instance case112 (and Person (equal has-age 33)))
 (related  case112 hospitalized has-status)
@@ -290,6 +316,7 @@
 (related  case112 Italy has-origin-of-infection)
 (related  case112 d18 has-confirmation-date)
 (related  case112 unknownForwardContact has-direct-contact)
+(related  case112 white has-race)
 
 (instance case119 (and Person (equal has-age 25)))
 (related  case119 hospitalized has-status)
@@ -298,6 +325,7 @@
 (related  case119 importedCase has-source-of-infection)
 (related  case119 Germany has-origin-of-infection)
 (related  case119 d18 has-confirmation-date) 
+(related  case119 white has-race)
 
 (instance case121 (and Person (equal has-age 37)))
 (related  case121 hospitalized has-status)
@@ -307,7 +335,7 @@
 (related  case121 Norway has-origin-of-infection)
 (related  case121 d18 has-confirmation-date) 
 (related  case121 unknownForwardContact has-direct-contact)
-
+(related  case121 white has-race)
 
 (instance case45 (and Person (equal has-age 20)))
 (related  case45 hospitalized has-status)
@@ -316,6 +344,7 @@
 (related  case45 importedCase has-source-of-infection)
 (related  case45 Italy has-origin-of-infection)
 (related  case45 d15 has-confirmation-date) 
+(related  case45 white has-race)
 
 ;Rules box
 (define-rule (?x localTransmission has-source-of-infection)
