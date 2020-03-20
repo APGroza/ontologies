@@ -46,17 +46,21 @@
                         (real has-confidence)
                        )
            :individuals (case0 case1 case2 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
-                         case13 case14 case15 case16 case17 case18 case19 case20 case21 case22 case23 case24 
-						 case25 case26 case27 case29 case45 case52 case76 case84 case86 
-                         case89 case90 case91 case92 case98 case99 case109 case111 case112 case119 case121 case243
+           
+
+                         case13 case14 case15 case16 case17 case18 case19 case20 case21 case22 case23 case24 case25 
+                         case26 case27 case29 case45 case51 case52 case76 case84 case86 
+                         case89 case90 case91 case92 case98 case99 case109 case111 case112 case119 case121 case243 case301
+
                          male female 
                          white black mongolian american malayan
                          recovered hospitalized quarantine selfIsolation dead 
                          localTransmission importedCase
                          unknownSourceContact unknownForwardContact
                          unknownOrigin
-                         Gorj Maramures Timis Bucharest Cluj Hunedoara Mures Brasov Buzau Satu-Mare Constanta Olt Bihor Neamt
-                         Italy Romania Israel Germany Spain Norway USA UK UAE
+                         Gorj Maramures Timis Bucharest Cluj Hunedoara Mures Brasov Buzau Satu-Mare 
+                         Constanta Olt Bihor Neamt Ilfov Arad
+                         Italy Romania Israel Germany Spain Norway USA UK UAE Iran
                          d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21 d22 d23 d24 d25 d26 d27 
                          d28 d29 d30 d31 d32 d33 d34
                          SARS-CoV-2 MERS-CoV SARS-CoV
@@ -304,6 +308,10 @@
 (related case22 Israel has-origin-of-infection)
 (related case22 d14 has-confirmation-date)
 
+
+
+
+
 (instance case23 (and Person (equal has-age 35)))
 (related  case23 hospitalized has-status)
 (related  case23 female has-gender)
@@ -345,6 +353,9 @@
 (related  case27 Italy has-origin-of-infection)
 (related  case27 d14 has-confirmation-date) 
 
+
+
+
 (instance case29 (and Person (equal has-age 47)))
 (related  case29 hospitalized has-status)
 (related  case29 female has-gender)
@@ -360,6 +371,15 @@
 (related  case45 importedCase has-source-of-infection)
 (related  case45 Italy has-origin-of-infection)
 (related  case45 d15 has-confirmation-date) 
+
+
+(instance case51 (and Person (equal has-age 21)))
+(related  case51 hospitalized has-status)
+(related  case51 male has-gender)
+(related  case51 Mures has-detection-location)
+(related  case51 importedCase has-source-of-infection)
+(related  case51 Italy has-origin-of-infection)
+(related  case51 d16 has-confirmation-date)
 
 (instance case52 (and Person (equal has-age 33)))
 (related  case52 hospitalized has-status)
@@ -502,6 +522,16 @@
 (related  case243 d22 has-confirmation-date) 
 (related  case243 unknownForwardContact has-direct-contact)
 (related  case243 white has-race) 
+
+(instance case301 (and Person (equal has-age 55)))
+(related case301 hospitalized has-status)
+(related case301 male has-gender)
+(related case301 Bucuresti has-detection-location)
+(related case301 localTransmission has-source-of-infection)
+(related case301 Romania has-origin-of-infection)
+(related case301 d18 has-confirmation-date)
+
+
 
 ;Rules box
 (define-rule (?x localTransmission has-source-of-infection)
