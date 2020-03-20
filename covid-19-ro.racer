@@ -3,7 +3,9 @@
 
 (in-knowledge-base Covid-19 Covid-19)
 (signature :atomic-concepts (Person Teenager Minor Adult Agent HumanAgent SoftwareAgent Bot AI Gender 
-                             Confirmed Patient Country County Date Status InfectionSource Spreader 
+                             Confirmed Patient Status InfectionSource Spreader 
+                             Country County City Location 
+                             Date 
                              Sars SevereAcuteRespiratorySyndrome  Betacoronavirus Virus Bat Fined COVID-19 Race
                              Seriously-ill-human-1 Human-with-fever
                              SocialDistancing Gathering MassGatherring MaxTenGatherring Group
@@ -17,7 +19,7 @@
                     (has-status                :domain Person           :range Status :inverse status-of)
                     (has-source-of-infection   :domain Person           :range InfectionSource)
                     (has-origin-of-infection   :domain Person           :range Country)
-                    (has-detection-location    :domain Person           :range County)
+                    (has-detection-location    :domain Person           :range (or County City))
                     (has-confirmation-date     :domain Person           :range Date)
                     (has-origin                :domain Virus)
                      causes
@@ -36,6 +38,7 @@
                     (has-start-time               :range Date)
                     (has-end-time                 :range Date)
                     (has-evidence                 :range Evidence)
+                    (is-located :domain Location :range Location :transitive t)
                     )
 
            :features (has-gender :inverse inv-has-gender)
@@ -50,16 +53,17 @@
                          case26 case27 case29 case45 case51 case52 case76 case84 case86 
                          case89 case90 case91 case92 case98 case99 case109 case111 case112 case119 case121 case243 case301
                          male female 
-                         white black mongolian american malayan
+                         white black mongolyan american malayan
                          recovered hospitalized quarantine selfIsolation dead 
                          localTransmission importedCase
                          unknownSourceContact unknownForwardContact
                          unknownOrigin
-                         Gorj Maramures Timis Bucharest Cluj Hunedoara Mures Brasov Buzau Satu-Mare 
-                         Constanta Olt Bihor Neamt Ilfov Arad
+                         Gorj Maramures Timis Cluj Hunedoara Mures Brasov Buzau Satu-Mare 
+                         Constanta Olt Bihor Neamt Ilfov Arad Iasi Bacau                  
+                         Lugoj Timisoara Bucuresti                                        
                          Italy Romania Israel Germany Spain Norway USA UK UAE Iran
                          d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21 d22 d23 d24 d25 d26 d27 
-                         d28 d29 d30 d31 d32 d33 d34
+                         d28 d29 d30 d31 d32 d33 d34 d35
                          SARS-CoV-2 MERS-CoV SARS-CoV
                          )
 )  
@@ -106,8 +110,7 @@
                             (some has-end-time Date)
                             (some has-evidence Evidence)
                             (>= has-confidence 0.0) (<= has-confidence 1.0)  
-                              ))
-
+                    ))
 
 (implies MedicalMyth Misinformation)
 (implies DeceptionLiterature Misinformation)
@@ -119,6 +122,7 @@
 ;(get-tbox-signature)
 
 (racer-read-file "dates.racer")
+(racer-read-file "geo.racer")
 
 (instance male Gender)
 (instance female Gender)
@@ -259,7 +263,7 @@
 (instance case17 (and Person (equal has-age 60) Fined))
 (related  case17 hospitalized has-status)
 (related  case17 male has-gender)
-(related  case17 Bucharest has-detection-location)
+(related  case17 Bucuresti has-detection-location)
 (related  case17 importedCase has-source-of-infection)
 (related  case17 Israel has-origin-of-infection)
 (related  case17 d13 has-confirmation-date) 
@@ -276,7 +280,7 @@
 (instance case19 (and Person (equal has-age 32)))
 (related case19 hospitalized has-status)
 (related case19 male has-gender)
-(related case19 Bucharest has-detection-location)
+(related case19 Bucuresti has-detection-location)
 (related case19 localTransmission has-source-of-infection)
 (related case19 Israel has-origin-of-infection)
 (related case19 d14 has-confirmation-date)
@@ -284,7 +288,7 @@
 (instance case20 (and Person (equal has-age 30)))
 (related case20 hospitalized has-status)
 (related case20 female has-gender)
-(related case20 Bucharest has-detection-location)
+(related case20 Bucuresti has-detection-location)
 (related case20 localTransmission has-source-of-infection)
 (related case20 Israel has-origin-of-infection)
 (related case20 d14 has-confirmation-date)
@@ -292,7 +296,7 @@
 (instance case21 (and Person (equal has-age 3)))
 (related case21 hospitalized has-status)
 (related case21 male has-gender)
-(related case21 Bucharest has-detection-location)
+(related case21 Bucuresti has-detection-location)
 (related case21 localTransmission has-source-of-infection)
 (related case21 Israel has-origin-of-infection)
 (related case21 d14 has-confirmation-date)
@@ -300,7 +304,7 @@
 (instance case22 (and Person (equal has-age 36)))
 (related case22 hospitalized has-status)
 (related case22 female has-gender)
-(related case22 Bucharest has-detection-location)
+(related case22 Bucuresti has-detection-location)
 (related case22 importedCase has-source-of-infection)
 (related case22 Israel has-origin-of-infection)
 (related case22 d14 has-confirmation-date)
@@ -310,7 +314,7 @@
 (instance case23 (and Person (equal has-age 35)))
 (related  case23 hospitalized has-status)
 (related  case23 female has-gender)
-(related  case23 Bucharest has-detection-location)
+(related  case23 Bucuresti has-detection-location)
 (related  case23 importedCase has-source-of-infection)
 (related  case23 Israel has-origin-of-infection)
 (related  case23 d14 has-confirmation-date)
@@ -319,7 +323,7 @@
 (instance case24 (and Person (equal has-age 34)))
 (related  case24 hospitalized has-status)
 (related  case24 male has-gender)
-(related  case24 Bucharest has-detection-location)
+(related  case24 Bucuresti has-detection-location)
 (related  case24 importedCase has-source-of-infection)
 (related  case24 UK has-origin-of-infection)
 (related  case24 d14 has-confirmation-date)
@@ -327,7 +331,7 @@
 (instance case25 (and Person (equal has-age 41)))
 (related  case25 hospitalized has-status)
 (related  case25 female has-gender)
-(related  case25 Bucharest has-detection-location)
+(related  case25 Bucuresti has-detection-location)
 (related  case25 importedCase has-source-of-infection)
 (related  case25 Germany has-origin-of-infection)
 (related  case25 d14 has-confirmation-date)
@@ -352,7 +356,7 @@
 (instance case29 (and Person (equal has-age 47)))
 (related  case29 hospitalized has-status)
 (related  case29 female has-gender)
-(related  case29 Bucharest has-detection-location)
+(related  case29 Bucuresti has-detection-location)
 (related  case29 localTransmission has-source-of-infection)
 (related  case29 Israel has-origin-of-infection)
 (related  case29 d14 has-confirmation-date)
@@ -500,7 +504,7 @@
 (instance case121 (and Person (equal has-age 37)))
 (related  case121 hospitalized has-status)
 (related  case121 male has-gender)
-(related  case121 Bucharest  has-detection-location)
+(related  case121 Bucuresti  has-detection-location)
 (related  case121 importedCase has-source-of-infection)
 (related  case121 Norway has-origin-of-infection)
 (related  case121 d18 has-confirmation-date) 
@@ -630,3 +634,4 @@
 
 ; CQ: all cases who where infected from people from people from Italy
 (individual-fillers Italy (inv has-origin-of-infection))
+
