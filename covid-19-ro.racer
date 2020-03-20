@@ -348,6 +348,15 @@
 (related case90 Italy has-origin-of-infection)
 (related case90 d17 has-confirmation-date)
 
+(instance case91 (and Person (equal has-age 1)))
+(related  case91 hospitalized has-status)
+(related  case91 male has-gender)
+(related  case91 Bacau has-detection-location)
+(related  case91 importedCase has-source-of-infection)
+(related  case91 Italy has-origin-of-infection)
+(related  case91 d17 has-confirmation-date) 
+(related  case91 white has-race)
+
 (instance case92 (and Person (equal has-age 41)))
 (related  case92 hospitalized has-status)
 (related  case92 female has-gender)
@@ -530,3 +539,6 @@
 
 ; CQ: person who infected none until now
 (individual-fillers unknownForwardContact (inv has-direct-contact))
+
+; CQ: all cases who where infected from people from people from Italy
+(individual-fillers Italy (inv has-origin-of-infection))
