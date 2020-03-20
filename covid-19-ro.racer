@@ -50,7 +50,7 @@
                        )
            :individuals (case0 case1 case2 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
                          case13 case14 case15 case16 case17 case18 case19 case20 case21 case22 case23 case24 case25 
-                         case26 case27 case29 case45 case51 case52 case76 case84 case86 
+                         case26 case27 case29 case31 case32 case 35 case45 case51 case52 case76 case84 case86 
                          case89 case90 case91 case92 case98 case99 case109 case111 case112 case119 case121 case243 case301
                          male female 
                          white black mongolyan american malayan
@@ -60,8 +60,8 @@
                          unknownOrigin
                          Gorj Maramures Timis Cluj Hunedoara Mures Brasov Buzau Satu-Mare 
                          Constanta Olt Bihor Neamt Ilfov Arad Iasi Bacau                  
-                         Lugoj Timisoara Bucuresti                                        
-                         Italy Romania Israel Germany Spain Norway USA UK UAE Iran
+                         Lugoj Timisoara Bucuresti Iasi Covasna                                       
+                         Italy Romania Israel Germany Spain Norway USA UK UAE Iran Poland
                          d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21 d22 d23 d24 d25 d26 d27 
                          d28 d29 d30 d31 d32 d33 d34 d35
                          SARS-CoV-2 MERS-CoV SARS-CoV
@@ -360,6 +360,30 @@
 (related  case29 localTransmission has-source-of-infection)
 (related  case29 Israel has-origin-of-infection)
 (related  case29 d14 has-confirmation-date)
+
+(instance case31 (and Person (equal has-age 42)))
+(related  case31 recovered has-status)
+(related  case31 male has-gender)
+(related  case31 Iasi has-detection-location)
+(related  case31 importedCase has-source-of-infection)
+(related  case31 Italy has-origin-of-infection)
+(related  case31 d15 has-confirmation-date) 
+
+(instance case32 (and Person (equal has-age 38)))
+(related  case32 hospitalized has-status)
+(related  case32 male has-gender)
+(related  case32 Iasi has-detection-location)
+(related  case32 localTransmission has-source-of-infection)
+(related  case32 Poland has-origin-of-infection)
+(related  case32 d15 has-confirmation-date)
+
+(instance case35 (and Person (equal has-age 53)))
+(related  case35 hospitalized has-status)
+(related  case35 female has-gender)
+(related  case35 Covasna has-detection-location)
+(related  case35 localTransmission has-source-of-infection)
+(related  case35 Italy has-origin-of-infection)
+(related  case35 d15 has-confirmation-date)
 
 (instance case45 (and Person (equal has-age 20)))
 (related  case45 hospitalized has-status)
