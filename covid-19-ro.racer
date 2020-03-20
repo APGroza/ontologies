@@ -55,7 +55,7 @@
                          unknownSourceContact unknownForwardContact
                          unknownOrigin
                          Gorj Maramures Timis Bucharest Cluj Hunedoara Mures Brasov Buzau Satu-Mare Constanta Olt Bihor Neamt
-                         Italy Romania Israel Germany Spain Norway USA UK UAE
+                         Italy Romania Israel Germany Spain Norway USA UK UAE Iran
                          d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21 d22 d23 d24 d25 d26 d27 
                          d28 d29 d30 d31 d32 d33 d34
                          SARS-CoV-2 MERS-CoV SARS-CoV
@@ -295,6 +295,14 @@
 (related  case45 importedCase has-source-of-infection)
 (related  case45 Italy has-origin-of-infection)
 (related  case45 d15 has-confirmation-date) 
+
+(instance case51 (and Person (equal has-age 21)))
+(related  case51 hospitalized has-status)
+(related  case51 male has-gender)
+(related  case51 Mures has-detection-location)
+(related  case51 importedCase has-source-of-infection)
+(related  case51 Italy has-origin-of-infection)
+(related  case51 d16 has-confirmation-date)
 
 (instance case52 (and Person (equal has-age 33)))
 (related  case52 hospitalized has-status)
