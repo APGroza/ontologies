@@ -19,18 +19,18 @@
                     )
            :features (has-gender :inverse inv-has-gender)
            :attributes ((integer has-age) (integer has-day) (integer has-month) (integer has-year))
-           :individuals (case0 case1 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
+           :individuals (case0 case1  case2 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
                          case13 case14 case15 case16 case17 case23 case24 case27 case45 case52 case76 
-                         case89 case90 case98 case99 case109 case111 case 112 case119 case121
+                         case89 case90 case98 case99 case109 case111 case 112 case119 case121 case243
                          male female 
                          white black mongolian american malayan
                          recovered hospitalized quarantine selfIsolation dead 
                          localTransmission importedCase
                          unknownSourceContact unknownForwardContact
                          unknownOrigin
-                         Gorj Maramures Timis Bucharest Cluj Hunedoara Mures Brasov Buzau Satu-Mare Constanta Olt Bihor Neamt
+                         Gorj Maramures Timis Bucharest Cluj Hunedoara Mures Brasov Buzau Satu-Mare Constanta Olt Bihor Neamt Alba
                          Italy Romania Israel Germany Spain Norway USA UK
-                         d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21
+                         d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21 d22
                          SARS-CoV-2 MERS-CoV SARS-CoV
                          )
 )  
@@ -92,7 +92,7 @@
 (instance d19 (and Date (equal has-Day 15) (equal has-Month 3)))
 (instance d20 (and Date (equal has-Day 16) (equal has-Month 3)))
 (instance d21 (and Date (equal has-Day 17) (equal has-Month 3)))
-
+(instance d22 (and Date (equal has-Day 18) (equal has-Month 3)))
 
 (related case0 case1 has-direct-contact)
 
@@ -103,6 +103,16 @@
 (related  case1 localTransmission has-source-of-infection)
 (related  case1 d1 has-confirmation-date) 
 (related  case1 white has-race) 
+
+(instance case2 (and Person (equal has-age 45)))
+(related  case2 hospitalized has-status)
+(related  case2 male has-gender)
+(related  case2 Maramures has-detection-location)
+(related  case2 importedCase has-source-of-infection)
+(related  case2 Italy has-origin-of-infection)
+(related  case2 d3 has-confirmation-date) 
+(related  case2 unknownForwardContact has-direct-contact)
+(related  case2 white has-race) 
 
 (instance case3 (and Person (equal has-age 38)))
 (related  case3 hospitalized has-status)
@@ -327,6 +337,15 @@
 (related  case121 d18 has-confirmation-date) 
 (related  case121 unknownForwardContact has-direct-contact)
 
+(instance case243 (and Person (equal has-age 36)))
+(related  case243 hospitalized has-status)
+(related  case243 female has-gender)
+(related  case243 Cluj has-detection-location)
+(related  case243 importedCase has-source-of-infection)
+(related  case243 Italy has-origin-of-infection)
+(related  case243 d22 has-confirmation-date) 
+(related  case243 unknownForwardContact has-direct-contact)
+(related  case243 white has-race) 
 
 (instance case45 (and Person (equal has-age 20)))
 (related  case45 hospitalized has-status)
