@@ -2,25 +2,51 @@
 (set-unique-name-assumption t)
 
 (in-knowledge-base Covid-19 Covid-19)
-(signature :atomic-concepts (Person Confirmed Patient Country County Date Status InfectionSource Spreader Gender 
-                             Sars SevereAcuteRespiratorySyndrome  Betacoronavirus Virus Bat Fined  COVID-19 Race
+(signature :atomic-concepts (Person Teenager Minor Adult Agent HumanAgent SoftwareAgent Bot AI Gender 
+                             Confirmed Patient Country County Date Status InfectionSource Spreader 
+                             Sars SevereAcuteRespiratorySyndrome  Betacoronavirus Virus Bat Fined COVID-19 Race
+                             Seriously-ill-human-1 Human-with-fever
+                             SocialDistancing Gathering MassGatherring MaxTenGatherring Group
+                             Information Misinformation Concealment Ambivalence Distorsion Falsification Fabricated
+                             MedicalMyth DeceptionLIterature UrbanLegend
+                             Uncertainty Certainty
+                             Motivation CommunicationChannel Object Content Evidence
                             )
-           :roles  ((has-direct-contact      :domain Person :range Person :parent has-contact)
-                    (has-contact             :domain Person :range Person :transitive t)
-                    (has-status              :domain Person :range Status :inverse status-of)
-                    (has-source-of-infection :domain Person :range InfectionSource)
-                    (has-origin-of-infection :domain Person :range Country)
-                    (has-detection-location  :domain Person :range County)
-                    (has-confirmation-date   :domain Person :range Date)
-                    (has-origin              :domain Virus)
+           :roles  ((has-direct-contact        :domain Person           :range Person :parent has-contact)
+                    (has-contact               :domain Person           :range Person :transitive t)
+                    (has-status                :domain Person           :range Status :inverse status-of)
+                    (has-source-of-infection   :domain Person           :range InfectionSource)
+                    (has-origin-of-infection   :domain Person           :range Country)
+                    (has-detection-location    :domain Person           :range County)
+                    (has-confirmation-date     :domain Person           :range Date)
+                    (has-origin                :domain Virus)
                      causes
-                     (has-race			         :domain Person :range Race) 
-
+                    (has-race	               :domain Person           :range Race) 
+                    (has-participant           :domain Gathering        :range Person)
+                    (hides                     :domain top              :range Information)
+                    (hasReceiver               :domain Misinformation   :range (or Agent Group)) 
+                    (has-belief-state          :domain (or Agent Group) :range (or Uncertainty Certainty))
+                     has-misrepresenting     
+                    (driven-by                     :range Motivation) 
+                    (has-sender                   :range (or Agent Group)) 
+                    (has-receiver                 :range (or Agent Group)) 
+                    (has-communication-channel    :range CommunicationChannel) 
+                    (has-object                   :range Object)
+                    (has-content                  :range Content)
+                    (has-start-time               :range Date)
+                    (has-end-time                 :range Date)
+                    (has-evidence                 :range Evidence)
                     )
+
            :features (has-gender :inverse inv-has-gender)
-           :attributes ((integer has-age) (integer has-day) (integer has-month) (integer has-year))
+           :attributes ((integer has-age) 
+                        (integer has-day) (integer has-month) (integer has-year) 
+                        (real social-distance-meters) (real social-distance-feet) 
+                        (real temperature-celsius) (real temperature-fahrenheit) 
+                        (real has-confidence)
+                       )
            :individuals (case0 case1 case2 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
-                         case13 case14 case15 case16 case17 case23 case24 case27 case45 case52 case76 
+                         case13 case14 case15 case16 case17 case23 case24 case27 case45 case52 case76 case84 case86 
                          case89 case90 case92 case98 case99 case109 case111 case 112 case119 case121 case243
                          male female 
                          white black mongolian american malayan
@@ -30,17 +56,14 @@
                          unknownOrigin
                          Gorj Maramures Timis Bucharest Cluj Hunedoara Mures Brasov Buzau Satu-Mare Constanta Olt Bihor Neamt
                          Italy Romania Israel Germany Spain Norway USA UK UAE
-                         d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21 d22 d23 d24 d25 d26
+                         d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21 d22 d23 d24 d25 d26 d27 
+                         d28 d29 d30 d31 d32 d33 d34
                          SARS-CoV-2 MERS-CoV SARS-CoV
                          )
 )  
 
 (implies SARS (and Betacoronavirus (some causes SevereAcuteRespiratorySyndrome)))
-(instance SARS-CoV-2 (and Sars (some has-origin Bat) (some causes COVID-19)))
-(instance MERS-CoV   (and Sars (some has-origin Bat)))
-(instance SARS-CoV   (and Sars (some has-origin Bat)))
-
-                       
+                      
 (equivalent Confirmed (some has-status Status)) 
 
 (equivalent Spreader (and Person (at-least 5 has-direct-contact)))
@@ -48,13 +71,60 @@
 
 (implies Country InfectionSource)
 
+(equivalent Minor (and Person (max has-age 18)))
+(equivalent Adult (and Person (min has-age 18)))
+(equivalent Teenager (and Person (min has-age 12)))
+(equivalent Human-with-fever (and Person (>= temperature-celsius 38.5)))
+(equivalent Seriously-ill-human-1 (and Person (>= temperature-celsius 40.0)))
+
+(equivalent SocialDistancing (>= social-distance-meters 1.0))
+
+;(implies top (= temperature-fahrenheit (+ (* 1.8 temperature-celsius) 32)))
+;(implies top (= social-distance-meters (* 0.3048 social-distance-feet)))
+
+(equivalent MassGatherring   (and Gathering (at-least 50 has-participant Person)))
+(equivalent MaxTenGatherring (and Gathering (at-most 10 has-participant Person)))
+
+(equivalent HumanAgent (and Agent Person))
+(equivalent SoftwareAgent (and Agent (and Agent (or Bot AI))))
+
+(implies Concealment   (and Misinformation (some hides Information)))
+(implies Ambivalence   (and Misinformation (some hasReceiver (some has-belief-state Uncertainty))))
+(implies Distorsion    (and Misinformation (some has-misrepresenting Information)))
+(implies Falsification (and Misinformation Fabricated))
+
+(equivalent Misinformation (and Information 
+                            (some driven-by Motivation)
+                            (some has-sender (or Agent Group))
+                            (some has-receiver (or Agent Group))
+                            (some has-communication-channel CommunicationChannel)
+                            (some has-object Object)
+                            (some has-content Content)
+                            (some has-start-time Date)
+                            (some has-end-time Date)
+                            (some has-evidence Evidence)
+                            (>= has-confidence 0.0) (<= has-confidence 1.0)  
+                              ))
+
+
+(implies MedicalMyth Misinformation)
+(implies DeceptionLiterature Misinformation)
+(implies UrbanLegend Misinformation)
+
 (classify-tbox)
 (tbox-coherent?) 
 (tbox-cyclic?)
 ;(get-tbox-signature)
 
+(racer-read-file "dates.racer")
+
 (instance male Gender)
 (instance female Gender)
+
+(instance SARS-CoV-2 (and Sars (some has-origin Bat) (some causes COVID-19)))
+(instance MERS-CoV   (and Sars (some has-origin Bat)))
+(instance SARS-CoV   (and Sars (some has-origin Bat)))
+
 
 (instance white Race)
 (instance black Race)
@@ -70,33 +140,6 @@
 
 (instance localTransmission InfectionSource)
 (instance importedCase InfectionSource)
-
-(instance d1  (and Date (equal has-Day 26) (equal has-Month 2)))
-(instance d2  (and Date (equal has-Day 27) (equal has-Month 2)))
-(instance d3  (and Date (equal has-Day 28) (equal has-Month 2)))
-(instance d4  (and Date (equal has-Day 29) (equal has-Month 2)))
-(instance d5  (and Date (equal has-Day 1) (equal has-Month 3)))
-(instance d6  (and Date (equal has-Day 2) (equal has-Month 3)))
-(instance d7  (and Date (equal has-Day 3) (equal has-Month 3)))
-(instance d8  (and Date (equal has-Day 4) (equal has-Month 3)))
-(instance d9  (and Date (equal has-Day 5) (equal has-Month 3)))
-(instance d10 (and Date (equal has-Day 6) (equal has-Month 3)))
-(instance d11 (and Date (equal has-Day 7) (equal has-Month 3)))
-(instance d12 (and Date (equal has-Day 8) (equal has-Month 3)))
-(instance d13 (and Date (equal has-Day 9) (equal has-Month 3)))
-(instance d14 (and Date (equal has-Day 10) (equal has-Month 3)))
-(instance d15 (and Date (equal has-Day 11) (equal has-Month 3)))
-(instance d16 (and Date (equal has-Day 12) (equal has-Month 3)))
-(instance d17 (and Date (equal has-Day 13) (equal has-Month 3)))
-(instance d18 (and Date (equal has-Day 14) (equal has-Month 3)))
-(instance d19 (and Date (equal has-Day 15) (equal has-Month 3)))
-(instance d20 (and Date (equal has-Day 16) (equal has-Month 3)))
-(instance d21 (and Date (equal has-Day 17) (equal has-Month 3)))
-(instance d22 (and Date (equal has-Day 18) (equal has-Month 3)))
-(instance d23 (and Date (equal has-Day 19) (equal has-Month 3)))
-(instance d24 (and Date (equal has-Day 20) (equal has-Month 3)))
-(instance d25 (and Date (equal has-Day 21) (equal has-Month 3)))
-(instance d26 (and Date (equal has-Day 22) (equal has-Month 3)))
 
 (related case0 case1 has-direct-contact)
 
@@ -270,6 +313,25 @@
 (related  case76 d17 has-confirmation-date) 
 (related  case76 unknownForwardContact has-direct-contact)
 
+(instance case84 (and Person (equal has-age 41)))
+(related case84 hospitalized has-status)
+(related case84 female has-gender)
+(related case84 Timisoara has-detection-location)
+(related case84 importedCase has-source-of-infection)
+(related case84 Italy has-origin-of-infection)
+(related case84 d15 has-confirmation-date)
+(related case84 unknownForwardContact has-direct-contact)
+
+(instance case86 (and Person (equal has-age 36)))
+(related case86 hospitalized has-status)
+(related case86 male has-gender)
+(related case86 Lugoj has-detection-location)
+(related case86 importedCase has-source-of-infection)
+(related case86 Italy has-origin-of-infection)
+(related case86 d15 has-confirmation-date)
+(related case86 unknownForwardContact has-direct-contact)
+
+
 (instance case89 (and Person (equal has-age 49)))
 (related case89 hospitalized has-status)
 (related case89 female has-gender)
@@ -422,7 +484,7 @@
 (individual-fillers Gorj (inv has-detection-location))
 
 ; CQ: retrieve all information about individual case1
-(describe-individual case1)
+;(describe-individual case1)
 
 ; CQ: persons direcly infected by case1 
 (individual-fillers case1 has-direct-contact)
@@ -459,3 +521,12 @@
 
 ; CQ: all cases from Satu-Mare
 (individual-fillers Satu-Mare (inv has-detection-location))
+
+; CQ: all cases with adults
+(concept-instances (and Adult Confirmed))
+
+; CQ: all cases with minors
+(concept-instances (and Minor Confirmed))
+
+; CQ: person who infected none until now
+(individual-fillers unknownForwardContact (inv has-direct-contact))
