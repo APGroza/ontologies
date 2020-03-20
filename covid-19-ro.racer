@@ -38,7 +38,7 @@
                     (has-start-time               :range Date)
                     (has-end-time                 :range Date)
                     (has-evidence                 :range Evidence)
-                    (is-located :domain Location :range Location :transitive t)
+                    (located-in :domain Location :range Location :transitive t)
                     )
 
            :features (has-gender :inverse inv-has-gender)
@@ -635,3 +635,10 @@
 ; CQ: all cases who where infected from people from people from Italy
 (individual-fillers Italy (inv has-origin-of-infection))
 
+; CQ: all cases who where infected from people from people from Italy
+(individual-fillers Timis (inv has-detection-location))
+
+; CQ: all cases from Timis county, including all cities from Timis (like Timisoara, Lugoj)
+(retrieve (?person) (or (?person Timis has-detection-location)
+                        (and (?person ?location has-detection-location)
+                             (?location Timis located-in))))
