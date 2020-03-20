@@ -20,14 +20,14 @@
            :attributes ((integer has-age) (integer has-day) (integer has-month) (integer has-year))
            :individuals (case0 case1 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
                          case13 case14 case15 case16 case17 case23 case24 case27 case45 case52 case76 
-                         case98 case99 case109 case111 case 112 case119 case121
+                         case92 case93 case98 case99 case109 case111 case 112 case119 case121
                          male female 
                          recovered hospitalized quarantine selfIsolation dead 
                          localTransmission importedCase
                          unknownSourceContact unknownForwardContact
                          unknownOrigin
-                         Gorj Maramures Timis Bucharest Cluj Hunedoara Mures Brasov Buzau Satu-Mare Constanta Olt
-                         Italy Romania Israel Germany Spain Norway USA UK
+                         Gorj Maramures Timis Bucharest Cluj Hunedoara Mures Brasov Buzau Satu-Mare Constanta Olt Iasi
+                         Italy Romania Israel Germany Spain Norway USA UK UAE France
                          d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21
                          SARS-CoV-2 MERS-CoV SARS-CoV
                          )
@@ -84,7 +84,10 @@
 (instance d19 (and Date (equal has-Day 15) (equal has-Month 3)))
 (instance d20 (and Date (equal has-Day 16) (equal has-Month 3)))
 (instance d21 (and Date (equal has-Day 17) (equal has-Month 3)))
-
+(instance d22 (and Date (equal has-Day 18) (equal has-Month 3)))
+(instance d23 (and Date (equal has-Day 19) (equal has-Month 3)))
+(instance d24 (and Date (equal has-Day 20) (equal has-Month 3)))
+(instance d25 (and Date (equal has-Day 21) (equal has-Month 3)))
 
 (related case0 case1 has-direct-contact)
 
@@ -229,6 +232,22 @@
 (related  case76 USA has-origin-of-infection)
 (related  case76 d17 has-confirmation-date) 
 (related  case76 unknownForwardContact has-direct-contact)
+
+(instance case92 (and Person (equal has-age 41)))
+(related case92 hospitalized has-status)
+(related case92 female has-gender)
+(related case92 Iasi has-detection-location)
+(related case92 importedCase has-source-of-infection)
+(related case92 UAE has-origin-of-infection)
+(related case92 d17 has-confirmation-date)
+
+(instance case93 (and Person (equal has-age 41)))
+(related case93 hospitalized has-status)
+(related case93 female has-gender)
+(related case93 Iasi has-detection-location)
+(related case93 importedCase has-source-of-infection)
+(related case93 France has-origin-of-infection)
+(related case93 d17 has-confirmation-date)
 
 (instance case98 (and Person (equal has-age 53)))
 (related case98 hospitalized has-status)
