@@ -99,8 +99,20 @@
 (related  case10 case7 has-direct-contact)
 (related  case10 white has-race)
 
+(instance case11 (and Person (equal has-age 16)))
+(related  case11 recovered has-status)
+(related  case11 female has-gender)
+(related  case11 Hunedoara has-detection-location)
+(related  case11 d11 has-confirmation-date) 
 (related  case11 case9 has-direct-contact)
+(related  case11 importedCase has-source-of-infection)
+
+(instance case12 (and Person (equal has-age 49)))
+(related  case12 male has-gender)
+(related  case12 hospitalized has-status)
 (related  case12 case14 has-direct-contact)
+(related  case12 d11 has-confirmation-date)
+(related  case12 importedCase has-source-of-infection) 
 
 (instance case15 (and Person (equal has-age 70)))
 (related  case15 hospitalized has-status)
@@ -271,6 +283,14 @@
 (related  case52 Italy has-origin-of-infection)
 (related  case52 d16 has-confirmation-date) 
 
+(instance case65 (and Person (equal has-age 57)))
+(related  case65 hospitalized has-status)
+(related  case65 male has-gender)
+(related  case65 Constanta  has-detection-location)
+(related  case65 importedCase has-source-of-infection)
+(related  case65 Belgium has-origin-of-infection)
+(related  case65 d17 has-confirmation-date) 
+
 (instance case76 (and Person (equal has-age 44)))
 (related  case76 hospitalized has-status)
 (related  case76 male has-gender)
@@ -374,6 +394,14 @@
 (related  case112 Italy has-origin-of-infection)
 (related  case112 d18 has-confirmation-date)
 (related  case112 unknownForwardContact has-direct-contact)
+
+(instance case118 (and Person (equal has-age 25)))
+(related  case118 hospitalized has-status)
+(related  case118 female has-gender)
+(related  case118 Constanta  has-detection-location)
+(related  case118 localTransmission has-source-of-infection)
+(related  case118 d18 has-confirmation-date) 
+(related  case118 case65 has-direct-contact)
 
 (instance case119 (and Person (equal has-age 25)))
 (related  case119 hospitalized has-status)
