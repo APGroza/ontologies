@@ -409,15 +409,15 @@
 (related  case121 d18 has-confirmation-date) 
 (related  case121 unknownForwardContact has-direct-contact)
 
-
 (instance case122 (and Person (equal has-age 58)))
 (related  case122 hospitalized has-status)
 (related  case122 female has-gender)
 (related  case122 Bucuresti  has-detection-location)
-(related  case122 localtransmission has-source-of-infection)
-(related  case122 N/A has-origin-of-infection)
+(related  case122 importedCase has-source-of-infection)
+(related  case122 Norway has-origin-of-infection)
 (related  case122 d18 has-confirmation-date) 
-(related  case122 NurseatDimitrieGerotaEmergencyHospital.Contactofcase#30,whowasacontactofcase#17. has-direct-contact)
+(related  case122 case30 has-direct-contact)
+(related  case122 case17 has-direct-contact)
 
 (instance case123 (and Person (equal has-age 24)))
 (related  case123 hospitalized has-status)
