@@ -244,7 +244,21 @@
 (related  case35 Italy has-origin-of-infection)
 (related  case35 d15 has-confirmation-date)
 
+(instance case36 (and Person (equal has-age 56)))
+(related case36 hospitalized has-status)
+(related case36 male has-gender)
+(related case36 Bucuresti has-detection-location)
+(related case36 importedCase has-source-of-infection)
+(related case36 Israel has-origin-of-infection)
+(related case36 d15 has-confirmation-date)
 
+(instance case37 (and Person (equal has-age 47)))
+(related  case37 hospitalized has-status)
+(related  case37 male has-gender)
+(related  case37 Bucuresti has-detection-location)
+(related  case37 importedCase has-source-of-infection)
+(related  case37 Germany has-origin-of-infection)
+(related  case37 d15 has-confirmation-date)
 
 (instance case45 (and Person (equal has-age 20)))
 (related  case45 hospitalized has-status)
@@ -253,7 +267,6 @@
 (related  case45 importedCase has-source-of-infection)
 (related  case45 Italy has-origin-of-infection)
 (related  case45 d15 has-confirmation-date) 
-
 
 (instance case51 (and Person (equal has-age 21)))
 (related  case51 hospitalized has-status)
@@ -330,6 +343,14 @@
 (related  case92 importedCase has-source-of-infection)
 (related  case92 UAE has-origin-of-infection)
 (related  case92 d17 has-confirmation-date) 
+
+(instance case93 (and Person (equal has-age 41)))
+(related case93 hospitalized has-status)
+(related case93 female has-gender)
+(related case93 Iasi has-detection-location)
+(related case93 importedCase has-source-of-infection)
+(related case93 France has-origin-of-infection)
+(related case93 d17 has-confirmation-date)
 
 (instance case97 (and Person (equal has-age 39)))
 (related  case97 hospitalized has-status)
