@@ -331,6 +331,14 @@
 (related  case92 UAE has-origin-of-infection)
 (related  case92 d17 has-confirmation-date) 
 
+(instance case97 (and Person (equal has-age 39)))
+(related  case97 hospitalized has-status)
+(related  case97 male has-gender)
+(related  case97 Dolj  has-detection-location)
+(related  case97 importedCase has-source-of-infection)
+(related  case97 Italy has-origin-of-infection)
+(related  case97 d18 has-confirmation-date)
+
 (instance case98 (and Person (equal has-age 53)))
 (related  case98 hospitalized has-status)
 (related  case98 female has-gender)
