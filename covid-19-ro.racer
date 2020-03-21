@@ -50,11 +50,21 @@
                         (real has-confidence)
                         (string has-string)
                        )
-           :individuals (case0 case1 case2 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
-                         case13 case14 case15 case16 case17 case18 case19 case20 case21 case22 case23 case24 case25 
-                         case26 case27 case29  case31 case32 case35 case36 case37 case38 case39 case40 case45 case51
-						 case52 case76 case84 case86 case89 case90 case91 case92 case98 case99 case109 case111 case112
-						 case119 case120 case121 case243 case301
+           :individuals (case0 case1 case2 case3 case4 case5 case6 case7 case8 case9 case10 
+                         case11 case12 case13 case14 case15 case16 case17 case18 case19 case20 
+                         case21 case22 case23 case24 case25 case26 case27 case29 
+                         case31 case32 case35 case36 case37 
+                         case45 
+                         case51 case52 
+                         case76 
+                         case84 case86 case89 case90 
+                         case91 case92 case93 case98 case99 
+                         case109 
+                         case111 case112 case119 case120 
+                         case121 
+						             case243 
+                         case301 case308
+                                            
                          male female 
                          white black mongolyan american malayan
                          recovered hospitalized quarantine selfIsolation dead 
@@ -62,11 +72,12 @@
                          unknownSourceContact unknownForwardContact
                          unknownOrigin
                          Gorj Maramures Timis Cluj Hunedoara Mures Brasov Buzau Satu-Mare Suceava 
-                         Constanta Olt Bihor Neamt Ilfov Arad Iasi Bacau Covasna         ;counties        
+                         Constanta Olt Bihor Neamt Ilfov Arad Iasi Bacau Covasna Arges       ;counties        
                          Lugoj Timisoara Bucuresti                                       ;cities                                  
-                         Italy Romania Israel Germany Spain Norway USA UK UAE Iran Poland
+                         Italy Romania Israel Germany Spain Norway USA UK UAE Iran Poland France
                          d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21 d22 d23 d24 d25 d26 d27 
-                         d28 d29 d30 d31 d32 d33 d34 d35
+                         d28 d29 d30 d31 d32 d33 d34 d35 d36 d37 d38 d39 d40 d41 d42 d43 d44 d45 d46 d47 d48 d49 d50 d51 d52
+						 d52 d52 d53 d54 d55 d56 d57 d58 d59 d60 d61 d62 d63 d64 d65
                          SARS-CoV-2 MERS-CoV SARS-CoV
                          m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12 m13 m14 m15 m16 m17 m18 m19 m20 m21 m22 m23 m24 m25 m26 m28 m29 m30 
                          forstitia
@@ -183,9 +194,9 @@
 (instance m12 (and Falsification (string= has-string "Spraying alcohol or chlorine all over your body kills the new coronavirus")))
 (instance m13 (and Falsification (string= has-string "Vaccines against pneumonia protect you against the new coronavirus")))
 (instance m14 (and Falsification (string= has-string "Antibiotics effective in preventing and treating the new coronavirus")))
-(instance m15 (and Falsification (string= has-string "a")))
-(instance m16 (and Falsification (string= has-string "a")))
-(instance m17 (and Falsification (string= has-string "a")))
+(instance m15 (and Falsification (string= has-string "High dose of Vitamin C heals COVID-19")))
+(instance m16 (and Falsification (string= has-string "In Summer the virus will dissapear because it is very warm")))
+(instance m17 (and Falsification (string= has-string "The pets transmit the virus to humans")))
 (instance m18 (and Falsification (string= has-string "a")))
 (instance m19 (and Falsification (string= has-string "a")))
 (instance m20 (and Falsification (string= has-string "a")))
