@@ -19,7 +19,7 @@
 (related  case2 white has-race)
 
 (instance case3 (and Person (equal has-age 38)))
-(related  case3 hospitalized has-status)
+(related  case3 recovered has-status)
 (related  case3 female has-gender)
 (related  case3 Timis  has-detection-location)
 (related  case3 importedCase has-source-of-infection)
@@ -259,6 +259,27 @@
 (related  case37 importedCase has-source-of-infection)
 (related  case37 Germany has-origin-of-infection)
 (related  case37 d15 has-confirmation-date)
+
+(instance case38 (and Person (equal has-age 54)))
+(related  case38 hospitalized has-status)
+(related  case38 female has-gender)
+(related  case38 Bucuresti has-detection-location)
+(related  case38 localTransmission has-source-of-infection)
+(related  case38 d15 has-confirmation-date)
+
+(instance case39 (and Person (equal has-age 52)))
+(related  case39 hospitalized has-status)
+(related  case39 male has-gender)
+(related  case39 Constanta has-detection-location)
+(related  case39 d15 has-confirmation-date)
+
+(instance case40 (and Person (equal has-age 22)))
+(related  case40 hospitalized has-status)
+(related  case40 male has-gender)
+(related  case40 Arad has-detection-location)
+(related  case40 importedCase has-source-of-infection)
+(related  case40 Italy has-origin-of-infection)
+(related  case40 d15 has-confirmation-date)
 
 (instance case45 (and Person (equal has-age 20)))
 (related  case45 hospitalized has-status)
