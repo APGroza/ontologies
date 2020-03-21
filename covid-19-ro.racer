@@ -53,7 +53,7 @@
            :individuals (case0 case1 case2 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
                          case13 case14 case15 case16 case17 case18 case19 case20 case21 case22 case23 case24 case25 
                          case26 case27 case29  case31 case32 case35 case45 case51 case52 case76 case84 case86 
-                         case89 case90 case91 case92 case98 case99 case109 case111 case112 case119 case120 case121 case243 case301
+                         case89 case90 case91 case92 case98 case99 case109 case111 case112 case119 case120 case121 case122 case123 case243 case301
                          male female 
                          white black mongolyan american malayan
                          recovered hospitalized quarantine selfIsolation dead 
