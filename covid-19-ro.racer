@@ -53,7 +53,8 @@
            :individuals (case0 case1 case2 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
                          case13 case14 case15 case16 case17 case18 case19 case20 case21 case22 case23 case24 case25 
                          case26 case27 case29  case31 case32 case35 case45 case51 case52 case65 case76 case84 case86 
-                         case89 case90 case91 case92 case98 case99 case109 case111 case112 case118 case119 case120 case121 case243 case301
+                         case89 case90 case91 case92 case98 case99 case109 case111 case112 case118 case119 case120 
+                         case121 case243 case301 case308
                          male female 
                          white black mongolyan american malayan
                          recovered hospitalized quarantine selfIsolation dead 
@@ -61,7 +62,7 @@
                          unknownSourceContact unknownForwardContact
                          unknownOrigin
                          Gorj Maramures Timis Cluj Hunedoara Mures Brasov Buzau Satu-Mare Suceava 
-                         Constanta Olt Bihor Neamt Ilfov Arad Iasi Bacau Covasna         ;counties        
+                         Constanta Olt Bihor Neamt Ilfov Arad Iasi Bacau Covasna Arges       ;counties        
                          Lugoj Timisoara Bucuresti                                       ;cities                                  
                          Italy Romania Israel Germany Spain Norway USA UK UAE Iran Poland Belgium
                          d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21 d22 d23 d24 d25 d26 d27 
