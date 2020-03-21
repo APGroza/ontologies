@@ -443,7 +443,6 @@
 (related  case115 localTransmission has-source-of-infection)
 (related  case115 case26 has-direct-contact)
 
-
 (instance case116 (and Person (equal has-age 60)))
 (related  case116 hospitalized has-status)
 (related  case116 male has-gender)
@@ -530,7 +529,6 @@
 (related  case308 importedCase has-source-of-infection)
 (related  case308 Italy has-origin-of-infection)
 (related  case308 d20 has-confirmation-date)
-
 
 (instance case350 (and Person (equal has-age 46)))
 (related  case350 hospitalized has-status)

@@ -2,7 +2,7 @@
 (instance Timisoara City)
 (instance Lugoj City)
 (instance Bacau City)
-(instance Brasov)
+(instance Brasov City)
 
 (instance Ilfov County)
 (instance Gorj County)
@@ -27,7 +27,6 @@
 
 (related Ilfov Romania located-in)
 (related Brasov Brasov located-in)
-(related )
 (related Bacau Bacau located-in)
 (related Bucuresti Ilfov located-in)
 (related Timisoara Timis located-in) 
