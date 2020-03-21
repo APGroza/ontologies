@@ -205,7 +205,7 @@
 (instance m23 (and Falsification (string= has-string "a")))
 (instance m24 (and Falsification (string= has-string "a")))
 (instance m25 (and Falsification (string= has-string "a")))
-
+(instance m26 (and Falsification (string= has-string "If you cannot hold your breath for more than 50 seconds, you might have covid-19.")))
 
 
 ;Rules box
