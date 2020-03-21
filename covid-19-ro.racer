@@ -197,6 +197,16 @@
 (related  case5 case6 has-direct-contact)
 (related  case5 white has-race)
 
+(instance case6 (and Person (equal has-age 71)))
+(related  case6 hospitalized has-status)
+(related  case6 male has-gender)
+(related  case6 Suceava has-detection-location)
+(related  case6 importedCase has-source-of-infection)
+(related  case6 Italy has-origin-of-infection)
+(related  case6 d4 has-confirmation-date) 
+(related  case6 unknownForwardContact has-direct-contact)
+(related  case6 white has-race)
+
 (instance case7 (and Person (equal has-age 16)))
 (related  case7 recovered has-status)
 (related  case7 female has-gender)
