@@ -389,7 +389,7 @@
 (related  case123 Bucuresti has-detection-location)
 (related  case123 localTransmission has-source-of-infection)
 (related  case123 Romania has-origin-of-infection)
-(related  case123  has-direct-contact) 
+(related  case123 case17 has-direct-contact) 
 
 (instance case120 (and Person (equal has-age 46)))
 (related  case120 hospitalized has-status)
@@ -398,7 +398,7 @@
 (related  case120 importedCase has-source-of-infection)
 (related  case120 Italy has-origin-of-infection)
 (related  case120 d18 has-confirmation-date) 
-(related  case120 case17 has-direct-contact)
+(related  case120 unknownForwardContact has-direct-contact)
 
 (instance case121 (and Person (equal has-age 37)))
 (related  case121 hospitalized has-status)
