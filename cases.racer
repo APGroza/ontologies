@@ -423,10 +423,11 @@
 (related  case123 hospitalized has-status)
 (related  case123 male has-gender)
 (related  case123 Bucuresti  has-detection-location)
-(related  case123 localtransmission has-source-of-infection)
-(related  case123 N/A has-origin-of-infection)
+(related  case123 localTransmission has-source-of-infection)
+(related  case123 Norway has-origin-of-infection)
 (related  case123 d18 has-confirmation-date) 
-(related  case123 Contactofcase#17. has-direct-contact)
+(related  case123 case17 has-direct-contact)
+
 
 (instance case243 (and Person (equal has-age 36)))
 (related  case243 hospitalized has-status)
@@ -453,3 +454,4 @@
 (related  case308 importedCase has-source-of-infection)
 (related  case308 Italy has-origin-of-infection)
 (related  case308 d20 has-confirmation-date)
+
