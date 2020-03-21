@@ -383,6 +383,14 @@
 (related  case119 Germany has-origin-of-infection)
 (related  case119 d18 has-confirmation-date) 
 
+(instance case123 (and Person (equal has-age 24)))
+(related  case123 hospitalized has-status)
+(related  case123 male has-gender)
+(related  case123 Bucuresti has-detection-location)
+(related  case123 localTransmission has-source-of-infection)
+(related  case123 Romania has-origin-of-infection)
+(related  case123 case17 has-direct-contact) 
+
 (instance case120 (and Person (equal has-age 46)))
 (related  case120 hospitalized has-status)
 (related  case120 male has-gender)
