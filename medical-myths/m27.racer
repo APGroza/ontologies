@@ -1,0 +1,41 @@
+(full-reset)
+(in-knowledge-base m27-tbox m27)
+
+(signature :atomic-concepts (Falsification Drink COVID-19 Disease Drug Virus Antibiotic)
+           :roles ((treats   :domain Drug    :range Disease :inverse treated-by)
+                   (heals)
+                   (prevents :domain Drug    :range Disease :inverse prevented-by)
+                   (causes   :inverse caused-by)
+                   (has-high-dose)
+                  )
+           :attributes ((string has-string))
+           :individuals (m27 Alcohol)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(roles-equivalent treats heals)
+(instance Alcohol Drink)
+(implies Covid-19 (and Disease (all prevented-by bottom)))
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m27 (and Falsification (string= has-string "Drinking alcohol prevents COVID-19")))
+(instance Alcohol (some prevents Covid-19))
+
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(classify-tbox)
+(prepare-abox)
+
+(tbox-cyclic?)
+(tbox-coherent?)
+(check-tbox-coherence)
+
+(abox-consistent?)
+(check-abox-coherence)
+
+
