@@ -1,11 +1,11 @@
 (full-reset)
 (in-knowledge-base m19-tbox m19)
 
-(signature :atomic-concepts (Falsification COVID-19 Disease Drug Virus Substance Infection)
+(signature :atomic-concepts (Falsification COVID-19 Disease Drug Virus Substance Infection Dehydration)
            :roles ((prevents :domain Substance    :range Disease :inverse prevented-by)
-                   (prevents)
-	       (drinks)
-                   (has-every-15 minutes-intake)
+					(protects)
+				   (drinks :domain Substance )
+                   (has-every-15-minutes-intake)
                   )
            :attributes ((string has-string))
            :individuals (m19 WarmWater)
@@ -13,15 +13,15 @@
 ; ------------------------------------------------
 ; Part 1: True/Trusted/Validated medical knowledge
 ; ------------------------------------------------
-
+(roles-equivalent prevents protects)
 (instance WarmWater Substance)
 (implies Covid-19 (and Disease (all prevented-by bottom)))
 
 ; ------------------------------------------------------------
 ; Part 2: Medical myth manually translated in description logic
 ; ------------------------------------------------------------
-(instance m19 (and Falsification  (string=has-string “Drinking WarmWater every 15 minutes prevent the infection with COVID-19 virus”)))
-(instance  WarmWater (none heals COVID-19))
+(instance m19 (and Falsification  (string= has-string"Drinking WarmWater every 15 minutes prevent the infection with COVID-19 virus")))
+(instance WarmWater (some prevents Dehydration))
 
 ; ------------------------------------------------------------
 ; Part 3: Queries to check incoherence/inconsistency/cycles
@@ -32,6 +32,13 @@
 (tbox-cyclic?)
 (tbox-coherent?)
 (check-tbox-coherence)
+(check-concept-coherence Substance)
 
 (abox-consistent?)
 (check-abox-coherence)
+
+; -----------------------------------------------------------------
+; Part 4: Repair ontology: forget some axioms from the medical myth
+; -----------------------------------------------------------------
+(forget (:tbox m19-tbox) (instance Substance (some prevents Dehydration)))
+(tbox-coherent?)
