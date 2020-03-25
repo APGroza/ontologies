@@ -1,1 +1,42 @@
+(full-reset)
+(in-knowledge-base m14-tbox m14-abox)
+
+(signature :atomic-concepts (Falsification Antibiotics COVID-19 Drug Disease Virus)
+           :roles ((treats   :domain Drug    :range Disease)
+                   (prevents :domain Drug    :range Disease)
+                   (causes   :inverse caused-by)
+                  )
+           :attributes ((string has-string))
+           :individuals (m14)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(implies Antibiotics Drug)
+(equivalent COVID-19 (and Disease (some caused-by Virus)))
+(implies Antibiotics (all treats (not (some caused-by Virus))))
+
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m14 (and Falsification (string= has-string "Antibiotics effective in preventing and treating the new coronavirus")))
+(implies Antibiotics (some treats COVID-19)) 
+(implies Antibiotics (some prevents COVID-19))
+
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(tbox-coherent?)
+(check-tbox-coherence)
+(check-concept-coherence Antibiotics)
+(abox-consistent?)
+
+; -----------------------------------------------------------------
+; Part 4: Repair ontology: forget some axioms from the medical myth
+; -----------------------------------------------------------------
+(forget (:tbox m14-tbox) (implies Antibiotics (some treats COVID-19)))
+(tbox-coherent?)
+
 
