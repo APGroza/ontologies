@@ -1,9 +1,8 @@
- 
 (full-reset)
 (in-knowledge-base m13-tbox m13-abox)
 
-(signature :atomic-concepts (Vaccines Pneumonia Protect Coronavirus Drug Disease Virus)
-           :roles ((prevents :domain Drug    :range Disease)
+(signature :atomic-concepts (Falsification Disease COVID-19 Vaccine Virus Coronavirus InfluenzaVirus Pneumonia PneumoniaVaccine)
+           :roles ((prevents   :domain Vaccine    :range Disease)
                    (causes   :inverse caused-by)
                   )
            :attributes ((string has-string))
@@ -13,27 +12,33 @@
 ; ------------------------------------------------
 ; Part 1: True/Trusted/Validated medical knowledge
 ; ------------------------------------------------
-(implies Vaccines Drug)
-(equivalent Coronavirus (and Disease (some caused-by Virus)))
-(equivalent Pneumonia (and Disease (some caused-by Virus)))
-(implies Vaccines (all prevents (some caused-by Virus)))
+
+(implies Coronavirus Virus)
+(implies InfluenzaVirus Virus)
+(disjoint Coronavirus InfluenzaVirus)
+(disjoint COVID-19 Pneumonia)
+(implies Vaccine (all prevents Pneumonia))
+(implies PneumoniaVaccine Vaccine)
+(implies PneumoniaVaccine (some prevents Pneumonia))
+(equivalent COVID-19 (and Disease (all caused-by Coronavirus)))
+(equivalent Pneumonia (and Disease (all caused-by InfluenzaVirus)))
 
 ; ------------------------------------------------------------
 ; Part 2: Medical myth manually translated in description logic
 ; ------------------------------------------------------------
 (instance m13 (and Falsification (string= has-string "Vaccines against pneumonia protect you against the new coronavirus")))
-(implies Vaccines (all prevents Coronavirus)) 
+(implies PneumoniaVaccine (all prevents COVID-19)) 
 
 ; ------------------------------------------------------------
 ; Part 3: Queries to check incoherence/inconsistency/cycles
 ; ------------------------------------------------------------
 (tbox-coherent?)
 (check-tbox-coherence)
-(check-concept-coherence Vaccines)
+(check-concept-coherence Vaccine)
 (abox-consistent?)
 
 ; -----------------------------------------------------------------
 ; Part 4: Repair ontology: forget some axioms from the medical myth
 ; -----------------------------------------------------------------
-(forget (:tbox m13-tbox) (implies Vaccines (all prevents Coronavirus)))
+(forget (:tbox m13-tbox) (implies PneumoniaVaccine (all prevents COVID-19)))
 (tbox-coherent?)
