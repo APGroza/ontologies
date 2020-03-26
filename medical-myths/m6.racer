@@ -1,0 +1,42 @@
+(full-reset)
+(in-knowledge-base m6-tbox m6-abox)
+
+(signature :atomic-concepts (Falsification Virus Coronavirus Disinfectant Tool)
+           :roles ((kills  :range Virus :inverse killed-by)
+                  )
+           :attributes ((string has-string))
+           :individuals (m6 hand-dryer soap bleach)
+)
+
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+
+(implies Coronavirus Virus)
+
+(instance soap Disinfectant)
+(instance bleach Disinfectant)
+(instance hand-dryer Tool)
+
+(disjoint Disinfectant Tool)
+
+(implies Virus (all killed-by Disinfectant))
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m6 (and Falsification (string= has-string "Hand dryers are effective in killing the new coronavirus")))
+(instance hand-dryer (some kills Coronavirus))
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(classify-tbox)
+(prepare-abox)
+
+(tbox-cyclic?)
+(tbox-coherent?)
+(check-tbox-coherence)
+
+(abox-consistent?)
+(check-abox-coherence)
