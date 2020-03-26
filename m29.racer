@@ -1,0 +1,38 @@
+(full-reset)
+(in-knowledge-base m29-tbox m29)
+
+(signature :atomic-concepts (Falsification Mosquito COVID-19 Disease Drug Virus Antibiotic)
+           :roles ((treats   :domain Drug    :range Disease :inverse treated-by)
+                   (heals)
+		   (transmits :domain Virus    :range Disease :inverse transmitted-by)
+                   (causes   :inverse caused-by)
+                   (has-high-dose)
+                  )
+           :attributes ((string has-string))
+           :individuals (m29)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(equivalent COVID-19 (and Disease (some caused-by Virus)))
+(implies Mosquito (all transmits COVID-19))
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m29 (and Falsification (string= has-string "Mosquitoes can transmit Covid-19")))
+(implies Mosquito (some transmits Covid-19))
+
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(classify-tbox)
+(prepare-abox)
+
+(tbox-cyclic?)
+(tbox-coherent?)
+(check-tbox-coherence)
+
+(abox-consistent?)
+(check-abox-coherence)
