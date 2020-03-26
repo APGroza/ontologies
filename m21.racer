@@ -1,39 +1,41 @@
 (full-reset)
 (in-knowledge-base m21-tbox m21)
 
-(signature :atomic-concepts (Falsification Food COVID-19 Disease Drug Virus Antibiotic)
+(signature :atomic-concepts (Falsification Person Food COVID-19 Bat-soup Disease Drug Virus Antibiotic)
            :roles ((treats   :domain Drug    :range Disease :inverse treated-by)
                    (heals)
                    (prevents :domain Drug    :range Disease :inverse prevented-by)
                    (causes   :inverse caused-by)
-                   (has-eat)
+				   (eat)
                   )
            :attributes ((string has-string))
-           :individuals (m21 bat-soup)
+           :individuals (m21)
 )
 ; ------------------------------------------------
 ; Part 1: True/Trusted/Validated medical knowledge
 ; ------------------------------------------------
-(roles-equivalent treats heals)
-(instance bat-soup Food)
-(implies Covid-19 (and Disease (all treated-by bottom)))
+(implies COVID-19 Virus)
+(implies Bat-soup Food)
+(implies Bat-soup (some causes (not Virus)))
+(implies Person (some eat Food))
 
 ; ------------------------------------------------------------
 ; Part 2: Medical myth manually translated in description logic
 ; ------------------------------------------------------------
 (instance m21 (and Falsification (string= has-string "The outbreak began because people ate bat soup")))
-(instance bat-soup (some causes Covid-19))
+(implies Bat-soup (all causes Covid-19))
 
 
 ; ------------------------------------------------------------
 ; Part 3: Queries to check incoherence/inconsistency/cycles
 ; ------------------------------------------------------------
-(classify-tbox)
-(prepare-abox)
-
-(tbox-cyclic?)
 (tbox-coherent?)
 (check-tbox-coherence)
-
+(check-concept-coherence Bat-soup)
 (abox-consistent?)
-(check-abox-coherence)
+
+; -----------------------------------------------------------------
+; Part 4: Repair ontology: forget some axioms from the medical myth
+; -----------------------------------------------------------------
+(forget (:tbox m21-tbox) (implies Bat-soup (all causes COVID-19)))
+(tbox-coherent?)
