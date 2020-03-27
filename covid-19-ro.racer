@@ -207,7 +207,7 @@
 (instance m21 (and Falsification (string= has-string "a")))
 (instance m22 (and Falsification (string= has-string "a")))
 (instance m23 (and Falsification (string= has-string "a")))
-(instance m24 (and Falsification (string= has-string "a")))
+(instance m24 (and Falsification (string= has-string "Taking homeopathic medicine helps prevent the effects of the new coronavirus")))
 (instance m25 (and Falsification (string= has-string "a")))
 (instance m26 (and Falsification (string= has-string "If you cannot hold your breath for more than 50 seconds, you might have covid-19.")))
 (instance m27 (and Falsification (string= has-string "Drinking alcohol prevents COVID-19")))
