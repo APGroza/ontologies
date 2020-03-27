@@ -1,0 +1,38 @@
+(full-reset)
+(in-knowledge-base m35-tbox m35-abox)
+
+(signature :atomic-concepts (Falsification Paracetamol COVID-19 Drug Disease Virus)
+           :roles ((improves   :domain Drug    :range Disease)
+                   (relieves :domain Drug    :range Disease)
+                   (causes   :inverse caused-by)
+                  )
+           :attributes ((string has-string))
+           :individuals (m35)
+)
+
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(implies Paracetamol Drug)
+(equivalent COVID-19 (and Disease (some caused-by Virus)))
+(implies Paracetamol (all relieves (some caused-by Virus)))
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m35 (and Falsification (string= has-string "Paracetamol improves state of covid patient")))
+(implies Paracetamol (all improves COVID-19)) 
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(tbox-coherent?)
+(check-tbox-coherence)
+(check-concept-coherence Paracetamol)
+(abox-consistent?)
+
+; -----------------------------------------------------------------
+; Part 4: Repair ontology: forget some axioms from the medical myth
+; -----------------------------------------------------------------
+(forget (:tbox m35-tbox) (implies Paracetamol (some improves COVID-19)))
+(tbox-coherent?)
