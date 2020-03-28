@@ -1,0 +1,30 @@
+(full-reset)
+(in-knowledge-base m32-tbox m32-abox)
+
+(signature :atomic-concepts (MisleadingHealthTip COVID-19 Lemon Person Fruit Disease Virus)
+           :roles (eat counter)
+           :attributes ((string has-string))
+           :individuals (m32)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(implies COVID-19 Virus)
+(implies Fruit (some counter (not Virus)))
+(implies Fruit Lemon)
+(implies Person (some eat Fruit))
+(implies COVID-19 (and Disease (all counter bottom)))
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m32 (and MisleadingHealthTip (string= has-string "Eating raw lemon counters coronavirus")))
+(implies Lemon (all counter COVID-19))
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(tbox-coherent?)
+(check-tbox-coherence)
+(check-concept-coherence Lemon)
+(abox-consistent?)
