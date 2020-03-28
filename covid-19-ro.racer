@@ -182,7 +182,7 @@
 (instance m12 (and Falsification (string= has-string "Spraying alcohol or chlorine all over your body kills the new coronavirus")))
 (instance m13 (and Falsification (string= has-string "Vaccines against pneumonia protect you against the new coronavirus")))
 (instance m14 (and Falsification (string= has-string "Antibiotics effective in preventing and treating the new coronavirus")))
-(instance m15 (and Falsification (string= has-string "a")))
+(instance m30 (and Falsification (string= has-string "Gargling hot water with lemon and salt treats the new coronavirus.")))
 (instance m16 (and Falsification (string= has-string "a")))
 (instance m17 (and Falsification (string= has-string "a")))
 (instance m18 (and Falsification (string= has-string "a")))
