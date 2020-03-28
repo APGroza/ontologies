@@ -1,0 +1,37 @@
+(full-reset)
+(in-knowledge-base m42-tbox m42)
+
+(signature :atomic-concepts (Falsification Mosquito COVID-19 Disease Virus Cough)
+           :roles ((transmitted-trough :domain COVID-19 :inverse transmits)
+                   (causes   :inverse caused-by)
+                   (has-high-dose)
+                  )
+           :attributes ((string has-string))
+           :individuals (m18)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(equivalent COVID-19 (and Disease (some caused-by Virus)))
+(implies Cough (all transmits COVID-19))
+(implies Mosquito (not (some transmits COVID-19)))
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m42 (and Falsification (string= has-string "Covid can be transmitted through mosquito")))
+(implies  Mosquito (all transmits Covid-19))
+
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(classify-tbox)
+(prepare-abox)
+
+(tbox-cyclic?)
+(tbox-coherent?)
+(check-tbox-coherence)
+
+(abox-consistent?)
+(check-abox-coherence)
