@@ -204,7 +204,7 @@
 (instance m17 (and Falsification (string= has-string "The pets transmit the virus to humans")))
 (instance m18 (and Falsification (string= has-string "Vaccines against pneumonia protect against the new coronavirus.")))
 (instance m19 (and Falsification (string= has-string "Chloroquine can cure COVID-19")))
-(instance m20 (and Falsification (string= has-string "a")))
+(instance m20 (and Falsification (string= has-string "If you can't hold your breath for 10 seconds, you have a coronavirus infection")))
 (instance m21 (and Falsification (string= has-string "a")))
 (instance m22 (and Falsification (string= has-string "a")))
 (instance m23 (and Falsification (string= has-string "a")))
