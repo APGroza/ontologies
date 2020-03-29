@@ -205,7 +205,7 @@
 (instance m18 (and Falsification (string= has-string "Vaccines against pneumonia protect against the new coronavirus.")))
 (instance m19 (and Falsification (string= has-string "a")))
 (instance m20 (and Falsification (string= has-string "a")))
-(instance m21 (and Falsification (string= has-string "a")))
+(instance m21 (and Falsification (string= has-string "Garlic effective in preventing the new coronavirus")))
 (instance m22 (and Falsification (string= has-string "a")))
 (instance m23 (and Falsification (string= has-string "a")))
 (instance m24 (and Falsification (string= has-string "Taking homeopathic medicine helps prevent the effects of the new coronavirus")))
