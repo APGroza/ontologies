@@ -1,5 +1,5 @@
 (full-reset)
-(in-knowledge-base m20-tbox m20)
+(in-knowledge-base m22-tbox m22)
 
 (signature :atomic-concepts (Falsification Person Food COVID-19 Chinese-food Disease Drug Virus Antibiotic)
            :roles ((treats   :domain Drug    :range Disease :inverse treated-by)
@@ -9,7 +9,7 @@
 				   (eat)
                   )
            :attributes ((string has-string))
-           :individuals (m20)
+           :individuals (m22)
 )
 ; ------------------------------------------------
 ; Part 1: True/Trusted/Validated medical knowledge
@@ -22,7 +22,7 @@
 ; ------------------------------------------------------------
 ; Part 2: Medical myth manually translated in description logic
 ; ------------------------------------------------------------
-(instance m20 (and Falsification (string= has-string "You can catch coronavirus from eating Chinese food in the U.S.")))
+(instance m22 (and Falsification (string= has-string "You can catch coronavirus from eating Chinese food in the U.S.")))
 (implies Chinese-food (all causes Covid-19))
 
 
@@ -37,6 +37,6 @@
 ; -----------------------------------------------------------------
 ; Part 4: Repair ontology: forget some axioms from the medical myth
 ; -----------------------------------------------------------------
-(forget (:tbox m20-tbox) (implies Chinese-food (all causes COVID-19)))
+(forget (:tbox m22-tbox) (implies Chinese-food (all causes COVID-19)))
 (tbox-coherent?)
 
