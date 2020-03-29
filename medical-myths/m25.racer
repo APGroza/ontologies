@@ -1,0 +1,47 @@
+(full-reset)
+(in-knowledge-base m25-tbox m25-abox)
+
+(signature :atomic-concepts (Falsification SweetPotato COVID-19 Disease Coronavirus Virus Drug)
+           :roles ((treats   :domain Drug   :range Disease)
+                   (prevents :domain Drug   :range Disease)
+                   (causes   :inverse caused-by)
+                  )
+           :attributes ((string has-string))
+           :individuals (m25)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(implies SweetPotato Drug)
+(equivalent COVID-19 (and Disease (some caused-by Virus)))
+(implies SweetPotato (all treats (not (some caused-by Virus))))
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m25 (and Falsification (string= has-string "Consumption of sweet potatoes can prevent or treat diseases")))
+(implies SweetPotato (some treats COVID-19)) 
+(implies SweetPotato (some prevents COVID-19))
+
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(classify-tbox)
+(prepare-abox)
+
+(tbox-cyclic?)
+(tbox-coherent?)
+(check-tbox-coherence)
+
+(abox-consistent?)
+(check-abox-coherence)
+
+
+; -----------------------------------------------------------------
+; Part 4: Repair ontology: forget some axioms from the medical myth
+; -----------------------------------------------------------------
+(forget (:tbox m25-tbox) (implies SweetPotato (some treats COVID-19)))
+(tbox-coherent?)
+
+
