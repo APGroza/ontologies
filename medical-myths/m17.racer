@@ -1,0 +1,40 @@
+(full-reset)
+(in-knowledge-base m17-tbox m17-abox)
+
+(signature :atomic-concepts (Falsification Pet Coronavirus Virus Human)
+           :roles (have
+				   transmit
+                  )
+           :attributes ((string has-string))
+           :individuals (m17)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(implies Coronavirus Virus)
+(implies Pet (all transmit Virus))
+(implies Human (some have Pet))
+
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m17 (and Falsification (string= has-string "The pets transmit the Coronavirus to humans")))
+(implies Pet (all transmit Coronavirus)) 
+
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(tbox-coherent?)
+(check-tbox-coherence)
+(check-concept-coherence Pet)
+(abox-consistent?)
+
+; -----------------------------------------------------------------
+; Part 4: Repair ontology: forget some axioms from the medical myth
+; -----------------------------------------------------------------
+(forget (:tbox m17-tbox) (implies Pet (all transmit Coronavirus)))
+(tbox-coherent?)
+
+
