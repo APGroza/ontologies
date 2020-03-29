@@ -1,0 +1,38 @@
+(full-reset)
+(in-knowledge-base m28-tbox m28)
+
+(signature :atomic-concepts (Falsification Star COVID-19 Disease Virus)
+           :roles ((kills 	 :domain Star	:range Disease :inverse killed-by)
+                   (causes   :inverse caused-by)
+                  )
+           :attributes ((string has-string))
+           :individuals (m28 sun)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(instance sun Star)
+
+(equivalent COVID-19 (and Disease (some caused-by Virus)))
+(implies Covid-19 (and Disease (all killed-by bottom)))
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m28 (and Falsification (string= has-string "The new Coronavirus ‘hates the sun’ and therefore sunbathing can kill it.")))
+
+(instance sun (some kills COVID-19))
+
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(classify-tbox)
+(prepare-abox)
+
+(tbox-cyclic?)
+(tbox-coherent?)
+(check-tbox-coherence)
+
+(abox-consistent?)
+(check-abox-coherence) 

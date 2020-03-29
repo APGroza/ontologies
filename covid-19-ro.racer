@@ -212,6 +212,8 @@
 (instance m25 (and Falsification (string= has-string "a")))
 (instance m26 (and Falsification (string= has-string "If you cannot hold your breath for more than 50 seconds, you might have covid-19.")))
 (instance m27 (and Falsification (string= has-string "Drinking alcohol prevents COVID-19")))
+(instance m28 (and Falsification (string= has-string "The new Coronavirus ‘hates the sun’ and therefore sunbathing can kill it.")))
+(instance m33 (and Falsification (string= has-string "Eating garlic prevents Covid-19")))
 (instance m41 (and Falsification (string= has-string "Zinc supplements can lower the risk of contracting Covid-19")))
 
 ;Rules box
