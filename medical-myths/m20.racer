@@ -1,14 +1,14 @@
 ;If you can't hold your breath for 10 seconds, you have a coronavirus infection
 
 (full-reset)
-(in-knowledge-base m10-tbox m10-abox)
+(in-knowledge-base m20-tbox m20-abox)
 
 (signature :atomic-concepts (Falsification  COVID-19 Disease Virus TestMode Drug)
            :roles ((tested   :domain Drug    :range Disease :inverse confirm)
 					)
            :attributes ((string has-string)
 						 (integer hold-your-breath))
-           :individuals (m10 hold-breath)
+           :individuals (m20 hold-breath)
 )
 ; ------------------------------------------------
 ; Part 1: True/Trusted/Validated medical knowledge
@@ -19,7 +19,7 @@
 ; ------------------------------------------------------------
 ; Part 2: Medical myth manually translated in description logic
 ; ------------------------------------------------------------
-(instance m10 (and Falsification (string= has-string "If you can't hold your breath for 10 seconds, you have a coronavirus infection")))
+(instance m20 (and Falsification (string= has-string "If you can't hold your breath for 10 seconds, you have a coronavirus infection")))
 (instance hold-breath (some confirm Covid-19) (max hold-your-breath 9))
 
 ; ------------------------------------------------------------
