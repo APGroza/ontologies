@@ -1,11 +1,10 @@
 (full-reset)
 (in-knowledge-base m19-tbox m19)
 
-(signature :atomic-concepts (Falsification COVID-19 Disease Drug Virus Substance Infection)
+(signature :atomic-concepts (Falsification COVID-19 Disease Drug Virus Substance Infection Dehydration)
            :roles ((prevents :domain Substance    :range Disease :inverse prevented-by)
-                   (prevents)
-	       (drinks)
-                   (has-every-15 minutes-intake)
+				   (drinks)
+                   (has-every-15-minutes-intake)
                   )
            :attributes ((string has-string))
            :individuals (m19 WarmWater)
@@ -20,8 +19,8 @@
 ; ------------------------------------------------------------
 ; Part 2: Medical myth manually translated in description logic
 ; ------------------------------------------------------------
-(instance m19 (and Falsification  (string=has-string “Drinking WarmWater every 15 minutes prevent the infection with COVID-19 virus”)))
-(instance  WarmWater (none heals COVID-19))
+(instance m19 (and Falsification  (string=has-string "Drinking WarmWater every 15 minutes prevent the infection with COVID-19 virus")))
+(instance  WarmWater (some prevents Dehydration))
 
 ; ------------------------------------------------------------
 ; Part 3: Queries to check incoherence/inconsistency/cycles
