@@ -1,7 +1,7 @@
 (full-reset)
 (in-knowledge-base m21-tbox m21)
 
-(signature :atomic-concepts (Falsification Person Food COVID-19 Bat-soup Disease Drug Virus Antibiotic)
+(signature :atomic-concepts (Falsification Person Outbreak Food COVID-19 Bat-soup Disease Drug Virus Antibiotic)
            :roles ((treats   :domain Drug    :range Disease :inverse treated-by)
                    (heals)
                    (prevents :domain Drug    :range Disease :inverse prevented-by)
@@ -16,14 +16,17 @@
 ; ------------------------------------------------
 (implies COVID-19 Virus)
 (implies Bat-soup Food)
-(implies Bat-soup (some causes (not Virus)))
 (implies Person (some eat Food))
+(implies Outbreak (some caused-by (not Bat-soup)))
+
+
 
 ; ------------------------------------------------------------
 ; Part 2: Medical myth manually translated in description logic
 ; ------------------------------------------------------------
 (instance m21 (and Falsification (string= has-string "The outbreak began because people ate bat soup")))
-(implies Bat-soup (all causes Covid-19))
+
+(implies Outbreak (all caused-by Bat-soup))
 
 
 ; ------------------------------------------------------------
@@ -31,11 +34,11 @@
 ; ------------------------------------------------------------
 (tbox-coherent?)
 (check-tbox-coherence)
-(check-concept-coherence Bat-soup)
+(check-concept-coherence Outbreak)
 (abox-consistent?)
 
 ; -----------------------------------------------------------------
 ; Part 4: Repair ontology: forget some axioms from the medical myth
 ; -----------------------------------------------------------------
-(forget (:tbox m21-tbox) (implies Bat-soup (all causes COVID-19)))
+(forget (:tbox m21-tbox) (implies Outbreak (all caused-by Bat-soup)))
 (tbox-coherent?)
