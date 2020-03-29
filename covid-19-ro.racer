@@ -66,7 +66,7 @@
                          case109 
                          case111 case112 case114 case115 case116 case119 
                          case120 case121 
-			 case243 
+			                   case243 
                          case301 case302 case308
                          male female 
                          white black mongolyan american malayan
@@ -82,10 +82,10 @@
                          d28 d29 d30 d31 d32 d33 d34 d35 d36 d37 d38 d39 d40 d41 d42 d43 d44 d45 d46 d47 d48 d49 d50 d51 d52
                          d52 d52 d53 d54 d55 d56 d57 d58 d59 d60 d61 d62 d63 d64 d65
                          SARS-CoV-2 MERS-CoV SARS-CoV
-                         m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12 m13 m14 m15 m16 m17 m18 m19 m20 m21 m22 m23 m24 m25 m26 m27 m28 m29 m30 
-                         m41 m50
-						 forstitia
-						 m27 m31 bleach zink
+
+                         m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12 m13 m14 m15 m16 m17 m18 m19 m20 m21 m22 m23 m24 m25 m26 m27 m28 m29 
+                         m30 m31 m32 m41 m42 m43 m44 m45 m46 m47 m48 m49 m50 m51 m52 m53 m54 m55
+                         forstitia bleach zink
                          )
 )  
 
@@ -215,7 +215,11 @@
 (instance m28 (and Falsification (string= has-string "The new Coronavirus ‘hates the sun’ and therefore sunbathing can kill it.")))
 (instance m33 (and Falsification (string= has-string "Eating garlic prevents Covid-19")))
 (instance m41 (and Falsification (string= has-string "Zinc supplements can lower the risk of contracting Covid-19")))
+(instance m44 (and Falsification (string= has-string "Vaccines against flu protect against the new coronavirus.")))
 (instance m50 (and Falsification (string= has-string "The new coronavirus can be transmitted through mosquito bites")))
+
+
+
 
 ;Rules box
 (define-rule (?x localTransmission has-source-of-infection)
