@@ -13,14 +13,14 @@
 ; Part 1: True/Trusted/Validated medical knowledge
 ; ------------------------------------------------
 (equivalent COVID-19 (and Disease (some caused-by Virus)))
-(implies Cough (all transmits COVID-19))
+(implies Cough (some transmits COVID-19))
 (implies Mosquito (not (some transmits COVID-19)))
 
 ; ------------------------------------------------------------
 ; Part 2: Medical myth manually translated in description logic
 ; ------------------------------------------------------------
 (instance m42 (and Falsification (string= has-string "Covid can be transmitted through mosquito")))
-(implies  Mosquito (all transmits Covid-19))
+(implies  Mosquito (some transmits Covid-19))
 
 
 ; ------------------------------------------------------------
