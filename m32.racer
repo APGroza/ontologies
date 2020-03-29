@@ -19,7 +19,7 @@
 ; Part 2: Medical myth manually translated in description logic
 ; ------------------------------------------------------------
 (instance m32 (and MisleadingHealthTip (string= has-string "Eating raw lemon counters coronavirus")))
-(implies Lemon (all counter COVID-19))
+(implies Lemon (some counter COVID-19))
 
 ; ------------------------------------------------------------
 ; Part 3: Queries to check incoherence/inconsistency/cycles
