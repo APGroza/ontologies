@@ -2,8 +2,8 @@
 (in-knowledge-base m1-tbox m1)
 
 (signature 	:atomic-concepts (Falsification Weather Virus Disease Flu)
-			:roles ((provokes   :domain Weather    :range Flu )
-					(causes: inverse caused-by)
+			:roles ((provokes :domain Weather   :range Flu )
+					(causes :inverse caused-by)
 				  )
 			:individuals (m1 ColdWeather)
 )
