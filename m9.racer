@@ -1,0 +1,39 @@
+(full-reset)
+(in-knowledge-base m9-tbox m9-abox)
+
+(signature :atomic-concepts (Falsification COVID-19 Snow ColdWeather Person Virus)
+           :roles (inPresence 
+					kill
+                  )
+           :attributes ((string has-string))
+           :individuals (m23)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(implies COVID-19 Virus)
+(implies (or ColdWeather Snow) (some kill (not Virus)))
+(implies Person (some inPresence (or ColdWeather Snow)))
+
+
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m9 (and Falsification (string= has-string "Cold weather and snow can kill the new coronavirus")))
+(implies (or ColdWeather Snow) (all kill COVID-19))
+
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(tbox-coherent?)
+(check-tbox-coherence)
+(check-concept-coherence (or ColdWeather Snow))
+(abox-consistent?)
+
+; -----------------------------------------------------------------
+; Part 4: Repair ontology: forget some axioms from the medical myth
+; -----------------------------------------------------------------
+(forget (:tbox m9-tbox) (implies (or ColdWeather Snow) (all kill COVID-19)))
+(tbox-coherent?)

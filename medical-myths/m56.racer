@@ -1,0 +1,40 @@
+(full-reset)
+(in-knowledge-base m56-tbox m56-abox)
+
+(signature :atomic-concepts (Falsification COVID-19 Heat Person Virus Mosquito)
+           :roles (bite
+                   kill
+				   spread
+                  )
+           :attributes ((string has-string))
+           :individuals (m21)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(implies COVID-19 Virus)
+(implies Mosquito(some kill (not Virus)))
+(implies Heat Moqsquito)
+(implies Person (some bite Mosquito))
+
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m56 (and Falsification (string= has-string "Because of the high temperature, the COVID-19 will be spreading more because of the Moqsquito's bites")))
+(implies Moqsquito(all spread COVID-19)) 
+
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(tbox-coherent?)
+(check-tbox-coherence)
+(check-concept-coherence Moqsquito)
+(abox-consistent?)
+
+; -----------------------------------------------------------------
+; Part 4: Repair ontology: forget some axioms from the medical myth
+; -----------------------------------------------------------------
+(forget (:tbox m56-tbox) (implies Moqsquito(all spread COVID-19)))
+(tbox-coherent?)
