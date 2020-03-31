@@ -201,7 +201,7 @@
 (instance m14 (and Falsification (string= has-string "Antibiotics effective in preventing and treating the new coronavirus")))
 (instance m15 (and Falsification (string= has-string "High dose of Vitamin C heals COVID-19")))
 (instance m16 (and Falsification (string= has-string "In Summer the virus will dissapear because it is very warm")))
-(instance m17 (and Falsification (string= has-string "The pets transmit the virus to humans")))
+(instance m17 (and Falsification (string= has-string "The pets transmit the Coronavirus to humans")))
 (instance m18 (and Falsification (string= has-string "Vaccines against pneumonia protect against the new coronavirus.")))
 (instance m19 (and Falsification (string= has-string "Chloroquine can cure COVID-19")))
 (instance m20 (and Falsification (string= has-string "If you can't hold your breath for 10 seconds, you have a coronavirus infection")))
