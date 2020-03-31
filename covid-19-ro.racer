@@ -13,6 +13,7 @@
                              MedicalMyth DeceptionLIterature UrbanLegend MedicalMyth-COVID-19
                              Uncertainty Certainty
                              Motivation CommunicationChannel Object Content Evidence
+							 MisleadingTip Chemical Vitamin COVID-19 Disease Drug Virus
                             )
            :roles  ((has-direct-contact        :domain Person           :range Person :parent has-contact)
                     (has-contact               :domain Person           :range Person :transitive t)
@@ -40,6 +41,9 @@
                     (has-evidence                 :range Evidence)
                     (located-in :domain Location :range Location :transitive t)
                     (kills :parents fights-against)
+					(complications)
+                    (prevents :domain Drug    :range Disease :inverse prevented-by)
+                    (causes   :inverse caused-by)
                     )
 
            :features (has-gender :inverse inv-has-gender)
@@ -50,25 +54,37 @@
                         (real has-confidence)
                         (string has-string)
                        )
-           :individuals (case0 case1 case2 case3 case4 case5 case6 case7 case8 case9 case10 case11 case12 
-                         case13 case14 case15 case16 case17 case18 case19 case20 case21 case22 case23 case24 case25 
-                         case26 case27 case29  case31 case32 case35 case45 case51 case52 case76 case84 case86 
-                         case89 case90 case91 case92 case98 case99 case109 case111 case112 case119 case120 case121 case243 case301
+           :individuals (case0 case1 case2 case3 case4 case5 case6 case7 case8 case9 
+                         case10 case11 case12 case13 case14 case15 case16 case17 case18 case19 
+                         case20 case21 case22 case23 case24 case25 case26 case27 case29 
+                         case31 case32 case35 case36 case37 case38 case39
+                         case40 case45 
+                         case51 case52 
+                         case76 
+                         case84 case86 case89 
+                         case90 case91 case92 case93 case94 case95 case97 case98 case99 
+                         case109 
+                         case111 case112 case114 case115 case116 case119 
+                         case120 case121 
+			                   case243 
+                         case301 case302 case308
                          male female 
                          white black mongolyan american malayan
                          recovered hospitalized quarantine selfIsolation dead 
                          localTransmission importedCase
                          unknownSourceContact unknownForwardContact
                          unknownOrigin
-                         Gorj Maramures Timis Cluj Hunedoara Mures Brasov Buzau Satu-Mare Suceava 
-                         Constanta Olt Bihor Neamt Ilfov Arad Iasi Bacau Covasna         ;counties        
-                         Lugoj Timisoara Bucuresti                                       ;cities                                  
-                         Italy Romania Israel Germany Spain Norway USA UK UAE Iran Poland
+                         Dambovita Gorj Maramures Timis Cluj Hunedoara Mures Brasov Buzau Satu-Mare Suceava 
+                         Constanta Olt Bihor Neamt Ilfov Arad Iasi Bacau Covasna Arges Dolj      
+                         Lugoj Timisoara Bucuresti                                                                        
+                         Italy Romania Israel Germany Spain Norway USA UK UAE Iran Poland France Greece
                          d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21 d22 d23 d24 d25 d26 d27 
-                         d28 d29 d30 d31 d32 d33 d34 d35
+                         d28 d29 d30 d31 d32 d33 d34 d35 d36 d37 d38 d39 d40 d41 d42 d43 d44 d45 d46 d47 d48 d49 d50 d51 d52
+                         d52 d52 d53 d54 d55 d56 d57 d58 d59 d60 d61 d62 d63 d64 d65
                          SARS-CoV-2 MERS-CoV SARS-CoV
-                         m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12 m13 m14 m15 m16 m17 m18 m19 m20 m21 m22 m23 m24 m25 m26 m28 m29 m30 
-                         forstitia
+                         m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12 m13 m14 m15 m16 m17 m18 m19 m20 m21 m22 m23 m24 m25 m26 m27 m28 m29 
+                         m30 m31 m32 m41 m42 m43 m44 m45 m46 m47 m48 m49 m50 m51 m52 m53 m54 m55 m56
+                         forstitia bleach zink
                          )
 )  
 
@@ -182,18 +198,26 @@
 (instance m12 (and Falsification (string= has-string "Spraying alcohol or chlorine all over your body kills the new coronavirus")))
 (instance m13 (and Falsification (string= has-string "Vaccines against pneumonia protect you against the new coronavirus")))
 (instance m14 (and Falsification (string= has-string "Antibiotics effective in preventing and treating the new coronavirus")))
-(instance m30 (and Falsification (string= has-string "Gargling hot water with lemon and salt treats the new coronavirus.")))
-(instance m16 (and Falsification (string= has-string "a")))
-(instance m17 (and Falsification (string= has-string "a")))
-(instance m18 (and Falsification (string= has-string "a")))
-(instance m19 (and Falsification (string= has-string "a")))
-(instance m20 (and Falsification (string= has-string "a")))
+(instance m15 (and Falsification (string= has-string "High dose of Vitamin C heals COVID-19")))
+(instance m16 (and Falsification (string= has-string "In Summer the virus will dissapear because it is very warm")))
+(instance m17 (and Falsification (string= has-string "The pets transmit the Coronavirus to humans")))
+(instance m18 (and Falsification (string= has-string "Vaccines against pneumonia protect against the new coronavirus.")))
+(instance m19 (and Falsification (string= has-string "Chloroquine can cure COVID-19")))
+(instance m20 (and Falsification (string= has-string "If you can't hold your breath for 10 seconds, you have a coronavirus infection")))
 (instance m21 (and Falsification (string= has-string "a")))
 (instance m22 (and Falsification (string= has-string "a")))
 (instance m23 (and Falsification (string= has-string "a")))
-(instance m24 (and Falsification (string= has-string "a")))
+(instance m24 (and Falsification (string= has-string "Taking homeopathic medicine helps prevent the effects of the new coronavirus")))
 (instance m25 (and Falsification (string= has-string "a")))
-
+(instance m26 (and Falsification (string= has-string "If you cannot hold your breath for more than 50 seconds, you might have covid-19.")))
+(instance m27 (and Falsification (string= has-string "Drinking alcohol prevents COVID-19")))
+(instance m28 (and Falsification (string= has-string "The new Coronavirus ‘hates the sun’ and therefore sunbathing can kill it.")))
+(instance m30 (and Falsification (string= has-string "Gargling hot water with lemon and salt treats the new coronavirus.")))
+(instance m33 (and Falsification (string= has-string "Eating garlic prevents Covid-19")))
+(instance m41 (and Falsification (string= has-string "Zinc supplements can lower the risk of contracting Covid-19")))
+(instance m42 (and Falsification (string= has-string "Covid can be transmitted through mosquito")))
+(instance m44 (and Falsification (string= has-string "Vaccines against flu protect against the new coronavirus.")))
+(instance m50 (and Falsification (string= has-string "The new coronavirus can be transmitted through mosquito bites")))
 
 
 ;Rules box

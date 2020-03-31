@@ -1,0 +1,36 @@
+(full-reset)
+
+(in knowledge-base boala-tbox boala)
+
+(signature :atomic-concepts(Falsification Vaccine Autism Genetic Disease Drug)
+			:roles((provoke :domain Drug :range Disease)
+					causes :inverse caused-by)
+					
+					)
+					
+					
+;Part1
+(implies Vaccine Drug)
+(equivalent Autism(and Disease (some caused-by Genetic)))
+(implies Vaccine (all provoke (not (some caused-by Genetic))))
+
+
+
+;Part2 
+(instance boala (and Falsification (string= has-string "Vaccine provoke autism")))
+(implies Vaccine (some provoke Autism)) 
+
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(tbox-coherent?)
+(check-tbox-coherence)
+(check-concept-coherence Vaccine)
+(abox-consistent?)
+
+; -----------------------------------------------------------------
+; Part 4: Repair ontology: forget some axioms from the medical myth
+; -----------------------------------------------------------------
+(forget (:tbox m14-tbox) (implies Vaccine (some provoke Autism)))
+(tbox-coherent?)
