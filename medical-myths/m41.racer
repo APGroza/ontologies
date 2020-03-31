@@ -1,0 +1,43 @@
+(full-reset)
+(in-knowledge-base m41-tbox m41)
+
+(signature :atomic-concepts (Falsification Supplement Zinc Covid-19 Disease Virus)
+           :roles (
+                   (prevents :domain Supplement :range Disease :inverse prevented-by)                  
+				   (causes   :inverse caused-by)
+				 )
+           :attributes ((string has-string))
+           :individuals (m41)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(implies Zinc Supplement)
+(equivalent COVID-19 (and Disease (some caused-by Virus)))
+(implies Zinc (all prevents (not (some caused-by Virus))))
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m41 (and Falsification (string= has-string "Zinc supplements can lower the risk of contracting Covid-19")))
+(implies Zinc (some prevents Covid-19))
+
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(classify-tbox)
+(prepare-abox)
+
+(tbox-cyclic?)
+(tbox-coherent?)
+(check-tbox-coherence)
+
+(abox-consistent?)
+(check-abox-coherence)
+
+; -----------------------------------------------------------------
+; Part 4: Repair ontology: forget some axioms from the medical myth
+; -----------------------------------------------------------------
+(forget (:tbox m41-tbox) (implies Zinc (some prevents COVID-19)))
+(tbox-coherent?)

@@ -1,0 +1,40 @@
+(full-reset)
+(in-knowledge-base m27-tbox m27)
+
+(signature :atomic-concepts (MisleadingTip Chemical Vitamin COVID-19 Disease Drug Virus )
+           :roles ((treats   :domain Drug    :range Disease :inverse treated-by)
+                   (complications)
+                   (prevents :domain Drug    :range Disease :inverse prevented-by)
+                   (causes   :inverse caused-by)
+                  )
+           :attributes ((string has-string))
+           :individuals (m27 m31 bleach zink)
+)
+
+
+(roles-equivalent complications prevents)
+(instance bleach Chemical)
+(implies COVID-19 (and Disease (all treated-by bottom)))
+
+(instance zink Vitamin)
+(implies COVID-19 (and Disease (all treated-by bottom)))
+
+
+(instance m27 (and MisleadingTip (string= has-string "You can protect yourself from COVID-19 by swallowing or gargling with bleach!")))
+(instance bleach (some complications COVID-19))
+
+(instance m31 (and MisleadingTip (string= has-string "Taking Zink can prevent you 100% from being infected with COVID-19.")))
+(instance zink (some prevents COVID-19))
+
+
+(classify-tbox)
+(prepare-abox)
+
+(tbox-cyclic?)
+(tbox-coherent?)
+(check-tbox-coherence)
+
+(abox-consistent?)
+(check-abox-coherence)
+
+

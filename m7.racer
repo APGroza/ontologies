@@ -1,0 +1,53 @@
+(full-reset)
+(in-knowledge-base m7-tbox m7)
+
+(signature :atomic-concepts (Falsification pneumonia-vaccine respiratory-illness Vaccine COVID-19 Disease Virus immune-reaction)
+           :roles ((protects :domain Vaccine    :range Disease)
+                   (prevents :domain Vaccine    :range Disease)
+                   (causes   :inverse caused-by)
+                  )
+           :attributes ((string has-string))
+           :individuals (m7)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(implies pneumonia-vaccine vaccine)
+(implies respiratory-illness (and Disease (not immune-reaction)))
+
+(implies COVID-19 (and Disease (some caused-by Virus) immune-reaction))
+(implies pneumonia-vaccine (some protects respiratory-illness))
+(implies pneumonia-vaccine (some prevents respiratory-illness))
+
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m7 (and Falsification (string= has-string "Pneumonia vaccines can protect you against the new coronavirus")))
+(implies pneumonia-vaccine (some protects COVID-19))
+(implies pneumonia-vaccine (all prevents COVID-19))
+
+
+
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(classify-tbox)
+(prepare-abox)
+
+(tbox-cyclic?)
+(tbox-coherent?)
+(check-tbox-coherence)
+
+
+(abox-consistent?)
+
+
+; -----------------------------------------------------------------
+; Part 4: Repair ontology: forget some axioms from the medical myth
+; -----------------------------------------------------------------
+(forget (:tbox m7-tbox) (implies pneumonia-vaccine (some protects COVID-19))
+                        (implies pneumonia-vaccine (all prevents COVID-19)))
+						
+(tbox-coherent?)

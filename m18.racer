@@ -1,0 +1,41 @@
+(full-reset)
+(in-knowledge-base m18-tbox m18-abox)
+
+(signature :atomic-concepts (Falsification Disease COVID-19 Vaccine Virus Coronavirus InfluenzaVirus Pneumonia PneumoniaVaccine)
+           :roles ((cures   :domain Vaccine    :range Disease)
+                   (causes   :inverse caused-by)
+                  )
+           :attributes ((string has-string))
+           :individuals (m18)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(implies Coronavirus Virus)
+(implies InfluenzaVirus Virus)
+(disjoint Coronavirus InfluenzaVirus)
+(equivalent COVID-19 (and Disease (all caused-by Coronavirus)))
+(equivalent Pneumonia (and Disease (all caused-by InfluenzaVirus)))
+(disjoint COVID-19 Pneumonia)
+(implies PneumoniaVaccine Vaccine)
+(implies PneumoniaVaccine (some cures Pneumonia))
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m18 (and Falsification (string= has-string "Vaccines against pneumonia protect against the new coronavirus.")))
+(implies PneumoniaVaccine (all cures COVID-19)) 
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(tbox-coherent?)
+(check-tbox-coherence)
+(check-concept-coherence PneumoniaVaccine)
+(abox-consistent?)
+
+; -----------------------------------------------------------------
+; Part 4: Repair ontology: forget some axioms from the medical myth
+; -----------------------------------------------------------------
+(forget (:tbox m18-tbox) (implies PneumoniaVaccine (all cures COVID-19)))
+(tbox-coherent?)

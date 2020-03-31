@@ -1,0 +1,38 @@
+(full-reset)
+(in-knowledge-base m15-tbox m15)
+
+(signature :atomic-concepts (Falsification Vaccine Autism Genetic Disease Drug)
+           :roles ((provokes   :domain Drug    :range Disease :inverse provoked-by)    
+                   (causes   :inverse caused-by)
+                   
+                  )
+           :attributes ((string has-string))
+           :individuals (m15 parenting)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(instance Parentingg Parenting)
+(implies Autism (and Disease (all provoked-by bottom)))
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m15 (and Falsification (string= has-string "Parenting provokes Autism")))
+(instance parentingg (some provokes Autism))
+
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(classify-tbox)
+(prepare-abox)
+
+(tbox-cyclic?)
+(tbox-coherent?)
+(check-tbox-coherence)
+
+(abox-consistent?)
+(check-abox-coherence)
+
+

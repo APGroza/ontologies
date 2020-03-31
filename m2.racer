@@ -1,0 +1,41 @@
+(full-reset)
+(in-knowledge-base m2-tbox m2-abox)
+
+(signature :atomic-concepts (MisleadingHealthTip BleachGargling DrinkingExcessiveWater COVID-19 Drug Disease Virus)
+           :roles ((treats   :domain Drug    :range Disease)
+                   (prevents :domain Drug    :range Disease)
+                   (causes   :inverse caused-by)
+                  )
+           :attributes ((string has-string))
+           :individuals (m2)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(equivalent COVID-19 (and Disease (some caused-by Virus)))
+(implies BleachGargling (all treats (not (some caused-by Virus))))
+(implies DrinkingExcessiveWater (some treats (not (some caused-by Virus))))
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m2 (and MisleadingHealthTip (string= has-string "Gargling bleach or drinking excessive amounts of water can flush out the virus")))
+(implies BleachGargling (some treats COVID-19)) 
+(implies DrinkingExcessiveWater (some treats COVID-19))
+
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(tbox-coherent?)
+(check-tbox-coherence)
+(check-concept-coherence BleachGargling)
+(check-concept-coherence DrinkingExcessiveWater)
+(abox-consistent?)
+
+; -----------------------------------------------------------------
+; Part 4: Repair ontology: forget some axioms from the medical myth
+; -----------------------------------------------------------------
+(forget (:tbox m2-tbox) (implies BleachGargling (some treats COVID-19)))
+(forget (:tbox m2-tbox) (implies DrinkingExcessiveWater (some treats COVID-19)))
+(tbox-coherent?)

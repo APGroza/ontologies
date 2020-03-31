@@ -1,0 +1,42 @@
+(full-reset)
+(in-knowledge-base m24-tbox m24)
+
+(signature :atomic-concepts (Falsification COVID-19 Disease Drug Virus Medicine)
+           :roles ((treats   :domain Drug    :range Disease :inverse treated-by)
+                   (heals)
+                   (prevents :domain Drug    :range Disease :inverse prevented-by)
+                   (causes   :inverse caused-by)
+                   (has-high-dose)
+                  )
+           :attributes ((string has-string))
+           :individuals (m24 homeopathic)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(roles-equivalent treats heals)
+(instance homeopathic Medicine)
+
+(implies Covid-19 (and Disease (all treated-by bottom)))
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m24 (and Falsification (string= has-string "Taking homeopathic medicine helps prevent the effects of the new coronavirus")))
+(instance homeopathic (some prevents Covid-19))
+
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(classify-tbox)
+(prepare-abox)
+
+(tbox-cyclic?)
+(tbox-coherent?)
+(check-tbox-coherence)
+
+(abox-consistent?)
+(check-abox-coherence)
+
+

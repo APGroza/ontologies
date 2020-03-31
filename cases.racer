@@ -373,6 +373,24 @@
 (related case93 France has-origin-of-infection)
 (related case93 d17 has-confirmation-date)
 
+(instance case94 (and Person (equal has-age 27)))
+(related  case94 hospitalized has-status)
+(related  case94 female has-gender)
+(related  case94 Dambovita has-detection-location)
+(related  case94 importedCase has-source-of-infection)
+(related  case94 Italy has-origin-of-infection)
+(related  case94 d17 has-confirmation-date)
+(related  case94 white has-race)
+
+(instance case95 (and Person (equal has-age 55)))
+(related  case95 hospitalized has-status)
+(related  case95 male has-gender)
+(related  case95 Dambovita has-detection-location)
+(related  case95 importedCase has-source-of-infection)
+(related  case95 Italy has-origin-of-infection)
+(related  case95 d17 has-confirmation-date)
+(related  case95 white has-race)
+
 (instance case97 (and Person (equal has-age 39)))
 (related  case97 hospitalized has-status)
 (related  case97 male has-gender)
@@ -442,7 +460,6 @@
 (related  case115 d18 has-confirmation-date)
 (related  case115 localTransmission has-source-of-infection)
 (related  case115 case26 has-direct-contact)
-
 
 (instance case116 (and Person (equal has-age 60)))
 (related  case116 hospitalized has-status)
@@ -523,6 +540,16 @@
 (related  case301 Romania has-origin-of-infection)
 (related  case301 d18 has-confirmation-date)
 
+(instance case302 (and Person (equal has-age 29)))
+(related  case302 hospitalized has-status)
+(related  case302 female has-gender)
+(related  case302 Timisoara has-detection-location)
+(related  case302 importedCase has-source-of-infection)
+(related  case302 Greece has-origin-of-infection)
+(related  case302 d24 has-confirmation-date)
+(related  case302 white has-race)
+(related  case302 unknownForwardContact has-direct-contact)
+
 (instance case308 (and Person (equal has-age 46)))
 (related  case308 hospitalized has-status)
 (related  case308 male has-gender)
@@ -530,7 +557,6 @@
 (related  case308 importedCase has-source-of-infection)
 (related  case308 Italy has-origin-of-infection)
 (related  case308 d20 has-confirmation-date)
-
 
 (instance case350 (and Person (equal has-age 46)))
 (related  case350 hospitalized has-status)
