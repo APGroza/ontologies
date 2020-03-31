@@ -221,7 +221,6 @@
 (instance m50 (and Falsification (string= has-string "The new coronavirus can be transmitted through mosquito bites")))
 
 
-
 ;Rules box
 (define-rule (?x localTransmission has-source-of-infection)
   (and (?x Romania has-origin-of-infection)))
