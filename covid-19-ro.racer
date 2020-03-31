@@ -213,11 +213,13 @@
 (instance m27 (and Falsification (string= has-string "Drinking alcohol prevents COVID-19")))
 (instance m28 (and Falsification (string= has-string "The new Coronavirus ‘hates the sun’ and therefore sunbathing can kill it.")))
 (instance m30 (and Falsification (string= has-string "Gargling hot water with lemon and salt treats the new coronavirus.")))
+(instance m32 (and MisleadingHealthTip (string= has-string "Eating raw lemon counters coronavirus")))
 (instance m33 (and Falsification (string= has-string "Eating garlic prevents Covid-19")))
 (instance m41 (and Falsification (string= has-string "Zinc supplements can lower the risk of contracting Covid-19")))
 (instance m42 (and Falsification (string= has-string "Covid can be transmitted through mosquito")))
 (instance m44 (and Falsification (string= has-string "Vaccines against flu protect against the new coronavirus.")))
 (instance m50 (and Falsification (string= has-string "The new coronavirus can be transmitted through mosquito bites")))
+
 
 
 ;Rules box
