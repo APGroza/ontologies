@@ -1,0 +1,36 @@
+(full-reset)
+(in-knowledge-base m1-tbox m1)
+
+(signature 	:atomic-concepts (Falsification Weather Virus Disease Flu)
+			:roles ((provokes :domain Weather   :range Flu )
+					(causes :inverse caused-by)
+				  )
+			:individuals (m1 ColdWeather)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(equivalent Flu (and Disease (some caused-by Virus)))
+
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m1 (and Falsification (string= has-string "Cold weather causes the flu")))
+(instance ColdWeather (some causes Flu))
+
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(classify-tbox)
+(prepare-abox)
+
+(tbox-cyclic?)
+(tbox-coherent?)
+(check-tbox-coherence)
+
+(abox-consistent?)
+(check-abox-coherence)
+
+

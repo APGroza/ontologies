@@ -1,0 +1,44 @@
+(full-reset)
+(in-knowledge-base m35-tbox m35-abox)
+
+(signature :atomic-concepts (Falsification Pet COVID-19 Drug Disease Virus)
+           :roles ((treats   :domain Drug    :range Disease)
+                   (prevents :domain Drug    :range Disease)
+                   (causes   :inverse caused-by)
+				   (transmit :domain Virus    :range Disease :inverse transmitted-by)
+                  )
+           :attributes ((string has-string))
+           :individuals (m35)
+)
+; ------------------------------------------------
+; Part 1: True/Trusted/Validated medical knowledge
+; ------------------------------------------------
+(equivalent COVID-19 (and Disease (some caused-by Virus)))
+(implies Pet (not (some transmits COVID-19)))
+
+; ------------------------------------------------------------
+; Part 2: Medical myth manually translated in description logic
+; ------------------------------------------------------------
+(instance m35 (and Falsification (string= has-string "Pets can transmit the new coronavirus")))
+(implies Pet (some transmit COVID-19)) 
+
+
+; ------------------------------------------------------------
+; Part 3: Queries to check incoherence/inconsistency/cycles
+; ------------------------------------------------------------
+(classify-tbox)
+(prepare-abox)
+
+(tbox-cyclic?)
+(tbox-coherent?)
+(check-tbox-coherence)
+
+(abox-consistent?)
+(check-abox-coherence)
+; -----------------------------------------------------------------
+; Part 4: Repair ontology: forget some axioms from the medical myth
+; -----------------------------------------------------------------
+
+
+
+  
