@@ -205,7 +205,7 @@
 (instance m18 (and Falsification (string= has-string "Vaccines against pneumonia protect against the new coronavirus.")))
 (instance m19 (and Falsification (string= has-string "a")))
 (instance m20 (and Falsification (string= has-string "a")))
-(instance m21 (and Falsification (string= has-string "Garlic effective in preventing the new coronavirus")))
+(instance m21 (and Falsification (string= has-string "a")))
 (instance m22 (and Falsification (string= has-string "a")))
 (instance m23 (and Falsification (string= has-string "a")))
 (instance m24 (and Falsification (string= has-string "Taking homeopathic medicine helps prevent the effects of the new coronavirus")))
@@ -215,7 +215,7 @@
 (instance m28 (and Falsification (string= has-string "The new Coronavirus ‘hates the sun’ and therefore sunbathing can kill it.")))
 (instance m33 (and Falsification (string= has-string "Eating garlic prevents Covid-19")))
 (instance m41 (and Falsification (string= has-string "Zinc supplements can lower the risk of contracting Covid-19")))
-
+(instance m51 (and Falsification (string= has-string "Garlic effective in preventing the coronavirus")))
 ;Rules box
 (define-rule (?x localTransmission has-source-of-infection)
   (and (?x Romania has-origin-of-infection)))
