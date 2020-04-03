@@ -219,6 +219,7 @@
 (instance m42 (and Falsification (string= has-string "Covid can be transmitted through mosquito")))
 (instance m44 (and Falsification (string= has-string "Vaccines against flu protect against the new coronavirus.")))
 (instance m50 (and Falsification (string= has-string "The new coronavirus can be transmitted through mosquito bites")))
+(instance m51 (and Falsification (string= has-string "Garlic effective in preventing the coronavirus")))
 
 
 ;Rules box
