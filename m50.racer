@@ -3,6 +3,8 @@
 (in-knowledge-base m50-tbox m50-abox)
 
 
+
+
 (signature :atomic-concepts (Falsification COVID-19 Mosquito Human Virus)
 
            :roles (
@@ -31,15 +33,23 @@
 
 
 
+
+
+
+
+
 ; ------------------------------------------------------------
 
 ; Part 2: Medical myth manually translated in description logic
 
 ; ------------------------------------------------------------
 
-(instance m23 (and Falsification (string= has-string “The new coronavirus can be transmitted through mosquito bites”)))
+(instance m50 (and Falsification (string= has-string "The new coronavirus can be transmitted through mosquito bites")))
 
 (implies Mosquito (all transmit COVID-19)) 
+
+
+
 
 
 
@@ -60,12 +70,13 @@
 
 
 
+
 ; -----------------------------------------------------------------
 
 ; Part 4: Repair ontology: forget some axioms from the medical myth
 
 ; -----------------------------------------------------------------
 
-(forget (:tbox m23-tbox) (implies Mosquito (all transmit COVID-19)))
+(forget (:tbox m50-tbox) (implies Mosquito (all transmit COVID-19)))
 
 (tbox-coherent?)
